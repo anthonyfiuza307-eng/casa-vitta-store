@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coleção | CASA VITTA</title>
-  <link rel="icon" type="image/x-icon" href="//www.cazavitta.com/cdn/shop/files/favicon.png?crop=center&height=32&v=1729087560&width=32">
+  <title>CASA LUCE | Curadoria e Rituais de Lar</title>
+  <link rel="icon" type="image/png" href="assets/logo-casa-luce.png">
 
   <!-- ========================================================================= -->
   <!-- [ÁREA RESERVADA HEAD] INSERIR MEUS SCRIPTS AQUI                           -->
@@ -399,9 +399,7 @@
         </a>
       </div>
 
-      <a href="index.html" class="cv-header-logo">
-        CASA VITTA
-      </a>
+      <a href="index.html" class="cv-header-logo" aria-label="CASA LUCE"><img src="assets/logo-casa-luce.png" alt="CASA LUCE" class="cv-header-logo-img"></a>
 
       <div class="cv-header-icons">
         <a href="colecao.html?cat=natal" class="cv-header-icon-btn" aria-label="Buscar">
@@ -511,7 +509,7 @@
         </div>
         <div class="cv-footer-contact-details">
           <p>Segunda a Sexta, das 9h às 18h</p>
-          <p><a href="mailto:atendimento@cazavitta.com" class="cv-footer-link">atendimento@cazavitta.com</a></p>
+          <p><a href="mailto:atendimento@casaluce.com.br" class="cv-footer-link">atendimento@casaluce.com.br</a></p>
         </div>
       </div>
 
@@ -597,7 +595,7 @@
     <!-- Base do Footer -->
     <div class="cv-footer-bottom">
       <div class="cv-footer-copy">
-        © 2026 CASA VITTA · Todos os direitos reservados.
+        © 2026 CASA LUCE · Todos os direitos reservados.
       </div>
       <div class="cv-footer-social">
         <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="cv-social-link">
@@ -666,7 +664,7 @@
           description: 'Garrafas térmicas, xícaras, potiches e suportes para momentos acolhedores de pausa.'
         },
         'exclusivos': {
-          title: 'Exclusivos Casa Vitta',
+          title: 'Exclusivos Casa Luce',
           description: 'Curadoria autoral com peças de edição limitada que você só encontra aqui.'
         },
         'lancamentos': {
@@ -703,7 +701,7 @@
         currentCat = catParam;
         var info = CATEGORY_INFO[currentCat];
 
-        document.title = info.title + " | CASA VITTA";
+        document.title = info.title + " | CASA LUCE";
         document.getElementById('cat-breadcrumb-title').textContent = info.title;
         document.getElementById('cat-title').textContent = info.title;
         document.getElementById('cat-desc').textContent = info.description;
@@ -716,7 +714,7 @@
           }
         });
 
-        var catalog = window.CAZAVITTA_PRODUCTS || {};
+        var catalog = window.CASALUCE_PRODUCTS || {};
         var allKeys = Object.keys(catalog);
         var matchedProducts = [];
 

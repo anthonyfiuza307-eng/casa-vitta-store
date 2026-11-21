@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CAZAVITTA - ESTILOS ADICIONAIS DE UI/UX & CRO (ALTA CONVERSÃO)
+   CASA LUCE - ESTILOS ADICIONAIS DE UI/UX & CRO (ALTA CONVERSÃO)
    ========================================================================== */
 
 :root {
@@ -1036,3 +1036,8 @@ h1, h2, h3, .h1, .h2, .h3, .heading-font {
   font-weight: 700;
   color: #233329;
 }
+
+/* CASA LUCE BRAND LOGO */
+.cv-header-logo { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.cv-header-logo-img { max-height: 28px; width: auto; object-fit: contain; display: block; margin: 0 auto; }
+@media (max-width: 768px) { .cv-header-logo-img { max-height: 22px; } }

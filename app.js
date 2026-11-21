@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * CAZAVITTA FRONT-END ENGINE & SHOPPING CART SUITE
+ * CASA LUCE FRONT-END ENGINE & SHOPPING CART SUITE
  * ============================================================================
  * Gerencia: Carrinho Reativo Multi-Itens com localStorage e Soma Real (Sem Descontos Inventados),
  * Compra Rápida nos Cards (+ Adicionar ao Carrinho no Hover), Modais Institucionais,
@@ -19,7 +19,7 @@
 
     init() {
       try {
-        const saved = localStorage.getItem('cazavitta_cart');
+        const saved = localStorage.getItem('casaluce_cart');
         if (saved) {
           this.items = JSON.parse(saved);
         }
@@ -31,7 +31,7 @@
 
     save() {
       try {
-        localStorage.setItem('cazavitta_cart', JSON.stringify(this.items));
+        localStorage.setItem('casaluce_cart', JSON.stringify(this.items));
       } catch (e) {}
       this.updateUI();
     },
@@ -50,7 +50,7 @@
           uniqueId: uniqueId,
           id: product.id || 'prod_' + Date.now(),
           handle: product.handle || '',
-          title: product.title || 'Produto Cazavitta',
+          title: product.title || 'Produto Casa Luce',
           variantTitle: variantTitle,
           price: price,
           image: product.image || '',
@@ -359,7 +359,7 @@
           }
         }
 
-        const catalog = window.CAZAVITTA_PRODUCTS || {};
+        const catalog = window.CASA LUCE_PRODUCTS || {};
         let product = catalog[handle];
 
         if (!product && handle) {
@@ -406,10 +406,10 @@
   const ModalManager = {
     modalData: {
       'sobre-nos': {
-        title: 'Nossa História · Casa Vitta',
+        title: 'Nossa História · Casa Luce',
         content: `
           <h4>Uma casa onde o tempo desacelera</h4>
-          <p>A Casa Vitta nasceu de um desejo simples: trazer a natureza para dentro de casa. Acreditamos que um lar acolhedor se constrói com peças escolhidas com calma, como a pedra, a cerâmica, o vidro, a madeira e as fibras naturais, e com os pequenos rituais que repetimos todo ano.</p>
+          <p>A Casa Luce nasceu de um desejo simples: trazer a natureza para dentro de casa. Acreditamos que um lar acolhedor se constrói com peças escolhidas com calma, como a pedra, a cerâmica, o vidro, a madeira e as fibras naturais, e com os pequenos rituais que repetimos todo ano.</p>
           <p>Cada objeto da nossa curadoria é pensado para durar além de uma estação e para estar presente nos momentos que realmente importam: o café da manhã sem pressa, a mesa posta para quem a gente ama e o aconchego dos encontros.</p>
           <h4>Beleza natural e atemporal</h4>
           <p>Trabalhamos diretamente com artistas, artesãos e designers selecionados para levar sofisticação, autenticidade e rituais de bem-estar para residências em todo o Brasil.</p>
@@ -419,7 +419,7 @@
         title: 'Política de Privacidade',
         content: `
           <h4>Seus dados 100% seguros</h4>
-          <p>Na Casa Vitta, respeitamos integralmente a sua privacidade e os seus dados pessoais de acordo com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
+          <p>Na Casa Luce, respeitamos integralmente a sua privacidade e os seus dados pessoais de acordo com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
           <h4>Uso das Informações</h4>
           <p>As informações fornecidas em nossa loja (como nome, endereço e e-mail) são utilizadas exclusivamente para o processamento de pedidos, entrega segura e comunicações importantes sobre suas compras.</p>
           <h4>Segurança e Criptografia</h4>
@@ -433,7 +433,7 @@
           <p>Se você não estiver 100% satisfeito com o seu produto, você tem até 7 (sete) dias corridos após o recebimento para solicitar a troca ou devolução sem burocracia.</p>
           <h4>Como solicitar</h4>
           <ul>
-            <li>Envie um e-mail para <strong>atendimento@cazavitta.com</strong> com o número do seu pedido.</li>
+            <li>Envie um e-mail para <strong>atendimento@casaluce.com.br</strong> com o número do seu pedido.</li>
             <li>Fornecemos a autorização de postagem reversa sem custo de frete na primeira troca.</li>
             <li>O produto deve estar na embalagem original e sem indícios de uso indevido.</li>
           </ul>
@@ -445,11 +445,11 @@
         title: 'Termos de Uso',
         content: `
           <h4>Condições Gerais</h4>
-          <p>Ao navegar e realizar pedidos na Casa Vitta, você concorda com nossos termos de serviço, pensados para garantir clareza, transparência e respeito ao consumidor.</p>
+          <p>Ao navegar e realizar pedidos na Casa Luce, você concorda com nossos termos de serviço, pensados para garantir clareza, transparência e respeito ao consumidor.</p>
           <h4>Preços e Disponibilidade</h4>
           <p>Os preços, promoções e disponibilidades de estoque são válidos durante o período de exibição em nossa vitrine virtual, podendo sofrer atualizações periódicas sem aviso prévio.</p>
           <h4>Propriedade Intelectual</h4>
-          <p>Todas as marcas, fotos e textos são de propriedade da Casa Vitta ou de seus parceiros credenciados, sendo proibida a reprodução sem autorização prévia.</p>
+          <p>Todas as marcas, fotos e textos são de propriedade da Casa Luce ou de seus parceiros credenciados, sendo proibida a reprodução sem autorização prévia.</p>
         `
       },
       'envio': {
@@ -503,8 +503,8 @@
     open(type) {
       this.buildModal();
       const data = this.modalData[type] || {
-        title: 'Informações · Casa Vitta',
-        content: '<p>Estamos à disposição para ajudar você a escolher as melhores peças para a sua casa. Entre em contato pelo e-mail atendimento@cazavitta.com.</p>'
+        title: 'Informações · Casa Luce',
+        content: '<p>Estamos à disposição para ajudar você a escolher as melhores peças para a sua casa. Entre em contato pelo e-mail atendimento@casaluce.com.br.</p>'
       };
 
       document.getElementById('cro-modal-title').textContent = data.title;
@@ -605,7 +605,7 @@
       if (!resultsBox) return;
 
       const q = (query || '').toLowerCase().trim();
-      const catalog = window.CAZAVITTA_PRODUCTS || {};
+      const catalog = window.CASA LUCE_PRODUCTS || {};
       const allKeys = Object.keys(catalog);
 
       if (!q) {
