@@ -359,7 +359,7 @@
           }
         }
 
-        const catalog = window.CASA LUCE_PRODUCTS || {};
+        const catalog = window.CASALUCE_PRODUCTS || {};
         let product = catalog[handle];
 
         if (!product && handle) {
@@ -405,6 +405,16 @@
   // --------------------------------------------------------------------------
   const ModalManager = {
     modalData: {
+      'sobre': {
+        title: 'Nossa História · Casa Luce',
+        content: `
+          <h4>Uma casa onde o tempo desacelera</h4>
+          <p>A Casa Luce nasceu de um desejo simples: trazer a natureza para dentro de casa. Acreditamos que um lar acolhedor se constrói com peças escolhidas com calma, como a pedra, a cerâmica, o vidro, a madeira e as fibras naturais, e com os pequenos rituais que repetimos todo ano.</p>
+          <p>Cada objeto da nossa curadoria é pensado para durar além de uma estação e para estar presente nos momentos que realmente importam: o café da manhã sem pressa, a mesa posta para quem a gente ama e o aconchego dos encontros.</p>
+          <h4>Beleza natural e atemporal</h4>
+          <p>Trabalhamos diretamente com artistas, artesãos e designers selecionados para levar sofisticação, autenticidade e rituais de bem-estar para residências em todo o Brasil.</p>
+        `
+      },
       'sobre-nos': {
         title: 'Nossa História · Casa Luce',
         content: `
@@ -522,13 +532,22 @@
 
     bindTriggers() {
       document.addEventListener('click', (e) => {
-        const trigger = e.target.closest('[data-modal]');
+        const trigger = e.target.closest('[data-modal], a[href*="#modal-"], a[href*="/pages/"], a[href*="sobre-nos"]');
         if (trigger) {
           e.preventDefault();
-          const modalType = trigger.getAttribute('data-modal');
-          this.open(modalType);
+          e.stopPropagation();
+          let modalType = trigger.getAttribute('data-modal');
+          if (!modalType) {
+            const href = (trigger.getAttribute('href') || '').toLowerCase();
+            if (href.includes('privacidade')) modalType = 'privacidade';
+            else if (href.includes('trocas') || href.includes('devolu')) modalType = 'trocas';
+            else if (href.includes('termos')) modalType = 'termos';
+            else if (href.includes('envio') || href.includes('prazo')) modalType = 'envio';
+            else if (href.includes('sobre')) modalType = 'sobre-nos';
+          }
+          if (modalType) this.open(modalType);
         }
-      });
+      }, true);
     }
   };
 
@@ -605,7 +624,7 @@
       if (!resultsBox) return;
 
       const q = (query || '').toLowerCase().trim();
-      const catalog = window.CASA LUCE_PRODUCTS || {};
+      const catalog = window.CASALUCE_PRODUCTS || {};
       const allKeys = Object.keys(catalog);
 
       if (!q) {
@@ -728,21 +747,26 @@
   // --------------------------------------------------------------------------
   // 7. INICIALIZAÇÃO
   // --------------------------------------------------------------------------
-  document.addEventListener('DOMContentLoaded', () => {
-    CartState.init();
-    CartDrawer.build();
-    QuickAdd.init();
-    ModalManager.init();
-    SearchManager.init();
-    initProductNavigation();
+  function initializeAppSuite() {
+    try { CartState.init(); } catch (e) { console.error('CartState init err:', e); }
+    try { CartDrawer.build(); } catch (e) { console.error('CartDrawer build err:', e); }
+    try { QuickAdd.init(); } catch (e) { console.error('QuickAdd init err:', e); }
+    try { ModalManager.init(); } catch (e) { console.error('ModalManager init err:', e); }
+    try { SearchManager.init(); } catch (e) { console.error('SearchManager init err:', e); }
+    try { initProductNavigation(); } catch (e) { console.error('initProductNavigation err:', e); }
 
-    // Rolar suavemente se a URL tiver hash #cv_produtos ou #produtos
-    if (window.location.hash.includes('produto') && !window.location.pathname.includes('produto.html')) {
+    if (typeof window !== 'undefined' && window.location && window.location.hash && window.location.hash.includes('produto') && !window.location.pathname.includes('produto.html')) {
       setTimeout(() => {
         const target = document.getElementById('cv_produtos') || document.querySelector('.resource-list-grid');
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       }, 300);
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAppSuite);
+  } else {
+    initializeAppSuite();
+  }
 
 })();

@@ -797,22 +797,49 @@
         }
       }
 
-      document.addEventListener('DOMContentLoaded', function() {
-        renderCategory();
+      function initCategoryPage() {
+        var attempts = 0;
+        function tryRender() {
+          var catalog = window.CASALUCE_PRODUCTS;
+          if (catalog && Object.keys(catalog).length > 0) {
+            renderCategory();
+          } else if (attempts < 20) {
+            attempts++;
+            setTimeout(tryRender, 50);
+          } else {
+            renderCategory();
+          }
+        }
+        tryRender();
 
-        document.getElementById('sort-select').addEventListener('change', function() {
-          applySortAndRender();
-        });
+        var sortSelect = document.getElementById('sort-select');
+        if (sortSelect) {
+          sortSelect.addEventListener('change', function() {
+            applySortAndRender();
+          });
+        }
 
-        document.getElementById('cat-load-more-btn').addEventListener('click', function() {
-          currentPage++;
-          applySortAndRender();
-        });
+        var loadMoreBtn = document.getElementById('cat-load-more-btn');
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener('click', function() {
+            currentPage++;
+            applySortAndRender();
+          });
+        }
 
-        document.getElementById('open-cart-btn').addEventListener('click', function() {
-          window.CartDrawer.open();
-        });
-      });
+        var cartBtn = document.getElementById('open-cart-btn');
+        if (cartBtn) {
+          cartBtn.addEventListener('click', function() {
+            if (window.CartDrawer) window.CartDrawer.open();
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCategoryPage);
+      } else {
+        initCategoryPage();
+      }
 
       window.addEventListener('popstate', renderCategory);
     })();

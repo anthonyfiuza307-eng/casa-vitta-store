@@ -294,16 +294,21 @@
       align-items: baseline;
       gap: 12px;
       margin-bottom: 6px;
+      flex-wrap: nowrap;
     }
     .cv-pdp-price-current {
       font-size: 28px;
       font-weight: 700;
       color: #1a1a1a;
+      white-space: nowrap;
+      display: inline-block;
     }
     .cv-pdp-price-compare {
       font-size: 16px;
       color: #888888;
       text-decoration: line-through;
+      white-space: nowrap;
+      display: inline-block;
     }
     .cv-pdp-discount-badge {
       background: #c93b2b;
@@ -976,15 +981,24 @@
           handle = 'projetor-holografico-3d-natal-jardim';
         }
 
-        var catalog = window.CASALUCE_PRODUCTS || {};
-        var product = catalog[handle];
+        var catalog = window.CASALUCE_PRODUCTS || window.CAZAVITTA_PRODUCTS || {};
+        var allKeys = Object.keys(catalog);
+        if (allKeys.length === 0) return;
 
-        // Busca resiliente
+        var product = null;
+        if (handle) {
+          var cleanHandle = handle.toLowerCase().trim().replace(/^\/+|\/+$/g, '');
+          product = catalog[cleanHandle];
+          if (!product) {
+            var matched = allKeys.find(function(k) {
+              return k.toLowerCase() === cleanHandle || k.includes(cleanHandle) || cleanHandle.includes(k);
+            });
+            if (matched) product = catalog[matched];
+          }
+        }
+
         if (!product) {
-          var allKeys = Object.keys(catalog);
-          var matched = allKeys.find(function(k) { return k.includes(handle) || handle.includes(k); });
-          if (matched) product = catalog[matched];
-          else product = catalog['projetor-holografico-3d-natal-jardim'] || catalog[allKeys[0]];
+          product = catalog['projetor-holografico-3d-natal-jardim'] || catalog[allKeys[0]];
         }
 
         if (!product) return;
@@ -1158,46 +1172,77 @@
 
         // Vitrine Recomendados (4 Produtos Dinâmicos da Loja)
         var recGrid = document.getElementById('pdp-recommendations-grid');
-        var allKeys = Object.keys(catalog).filter(function(k) { return k !== handle && catalog[k].images && catalog[k].images.length > 0; });
-        var recommendedKeys = allKeys.slice(0, 4);
+        var recKeys = Object.keys(catalog).filter(function(k) { return k !== handle && catalog[k].images && catalog[k].images.length > 0; });
+        var recommendedKeys = recKeys.slice(0, 4);
 
-        // Recommended products grid
-        
-          var p = catalog[k];
-          var pPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.price);
-          var pInst = (p.price / 12).toFixed(2).replace('.', ',');
-          return '<a href="produto.html?id=' + p.handle + '" class="cv-rec-card">' +
-                 '  <div class="cv-rec-img-box">' +
-                 '    <img src="' + p.images[0] + '" alt="' + p.title + '" loading="lazy">' +
-                 '  </div>' +
-                 '  <h4 class="cv-rec-card-title">' + p.title + '</h4>' +
-                 '  <div class="cv-rec-card-price">' + pPrice + '</div>' +
-                 '  <div class="cv-rec-card-installments">até 12x de R$ ' + pInst + '</div>' +
-                 '</a>';
-        }).join('');
+        if (recGrid && recommendedKeys.length > 0) {
+          recGrid.innerHTML = recommendedKeys.map(function(k) {
+            var p = catalog[k];
+            var pPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.price || 79.99);
+            var pInst = ((p.price || 79.99) / 12).toFixed(2).replace('.', ',');
+            return '<a href="produto.html?id=' + p.handle + '" class="cv-rec-card">' +
+                   '  <div class="cv-rec-img-box">' +
+                   '    <img src="' + p.images[0] + '" alt="' + p.title + '" loading="lazy">' +
+                   '  </div>' +
+                   '  <h4 class="cv-rec-card-title">' + p.title + '</h4>' +
+                   '  <div class="cv-rec-card-price">' + pPrice + '</div>' +
+                   '  <div class="cv-rec-card-installments">até 12x de R$ ' + pInst + '</div>' +
+                   '</a>';
+          }).join('');
+        }
       }
 
-      document.addEventListener('DOMContentLoaded', function() {
-        renderProduct();
+      function initPDP() {
+        var attempts = 0;
+        function tryRender() {
+          var catalog = window.CASALUCE_PRODUCTS || window.CAZAVITTA_PRODUCTS;
+          if (catalog && Object.keys(catalog).length > 0) {
+            renderProduct();
+          } else if (attempts < 20) {
+            attempts++;
+            setTimeout(tryRender, 50);
+          } else {
+            renderProduct();
+          }
+        }
+        tryRender();
 
         // Modal de Opções de Pagamento
         var paymentModal = document.getElementById('payment-modal');
-        document.getElementById('pdp-open-payment-modal').addEventListener('click', function(e) {
-          e.preventDefault();
-          paymentModal.classList.add('is-open');
-        });
-        document.getElementById('close-payment-modal').addEventListener('click', function() {
-          paymentModal.classList.remove('is-open');
-        });
-        paymentModal.addEventListener('click', function(e) {
-          if (e.target === paymentModal) paymentModal.classList.remove('is-open');
-        });
+        var openPayBtn = document.getElementById('pdp-open-payment-modal');
+        var closePayBtn = document.getElementById('close-payment-modal');
+
+        if (openPayBtn && paymentModal) {
+          openPayBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            paymentModal.classList.add('is-open');
+          });
+        }
+        if (closePayBtn && paymentModal) {
+          closePayBtn.addEventListener('click', function() {
+            paymentModal.classList.remove('is-open');
+          });
+        }
+        if (paymentModal) {
+          paymentModal.addEventListener('click', function(e) {
+            if (e.target === paymentModal) paymentModal.classList.remove('is-open');
+          });
+        }
 
         // Botão de abrir carrinho no header
-        document.getElementById('open-cart-btn').addEventListener('click', function() {
-          window.CartDrawer.open();
-        });
-      });
+        var cartBtn = document.getElementById('open-cart-btn');
+        if (cartBtn) {
+          cartBtn.addEventListener('click', function() {
+            if (window.CartDrawer) window.CartDrawer.open();
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPDP);
+      } else {
+        initPDP();
+      }
 
       // Suporte para navegação de histórico ou troca de hash
       window.addEventListener('popstate', renderProduct);
