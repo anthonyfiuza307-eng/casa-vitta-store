@@ -420,6 +420,29 @@
       background: #19251e;
       transform: translateY(-1px);
     }
+    .cv-buy-now-btn {
+      width: 100%;
+      height: 48px;
+      margin-top: -12px;
+      margin-bottom: 24px;
+      background: #2e7d32;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cv-buy-now-btn:hover {
+      background: #256629;
+      transform: translateY(-1px);
+    }
 
     /* Boxes de Confiança */
     .cv-trust-boxes {
@@ -720,6 +743,9 @@
             ADICIONAR AO CARRINHO
           </button>
         </div>
+        <button type="button" class="cv-buy-now-btn" id="pdp-buy-now-btn">
+          COMPRAR AGORA (PIX 5% OFF)
+        </button>
 
         <!-- Boxes de Confiança -->
         <div class="cv-trust-boxes">
@@ -1169,6 +1195,30 @@
             });
           }
         };
+
+        // Comprar Agora (Direto para o Checkout PIX)
+        var buyNowBtn = document.getElementById('pdp-buy-now-btn');
+        if (buyNowBtn) {
+          buyNowBtn.onclick = function(e) {
+            e.preventDefault();
+            var finalQty = parseInt(qtyInput.value, 10) || selectedQty || 1;
+            var variantName = selectedVariant && selectedVariant.title !== 'Default Title' ? selectedVariant.title : '';
+            var currentPrice = selectedVariant ? parseFloat(selectedVariant.price) : parseFloat(product.price);
+
+            if (window.CartState) {
+              window.CartState.addItem({
+                id: product.id,
+                handle: product.handle,
+                title: product.title,
+                variantTitle: variantName,
+                price: currentPrice,
+                image: mainImg.src,
+                quantity: finalQty
+              });
+            }
+            window.location.href = 'checkout.html';
+          };
+        }
 
         // Vitrine Recomendados (4 Produtos Dinâmicos da Loja)
         var recGrid = document.getElementById('pdp-recommendations-grid');

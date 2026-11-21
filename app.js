@@ -170,7 +170,7 @@
             <span>Valor Total</span>
             <span class="cro-val-total" id="cro-cart-total-val">R$ 0,00</span>
           </div>
-          <a href="#checkout" data-checkout="placeholder" class="cro-cart-checkout-btn">
+          <a href="checkout.html" class="cro-cart-checkout-btn">
             <span>FINALIZAR COMPRA</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -185,6 +185,18 @@
       `;
 
       this.panel.querySelector('.cro-cart-close').addEventListener('click', () => this.close());
+      const chkBtn = this.panel.querySelector('.cro-cart-checkout-btn');
+      if (chkBtn) {
+        chkBtn.addEventListener('click', (e) => {
+          if (CartState.items.length === 0) {
+            e.preventDefault();
+            alert('Sua sacola está vazia.');
+          } else {
+            e.preventDefault();
+            window.location.href = 'checkout.html';
+          }
+        });
+      }
 
       document.body.appendChild(this.overlay);
       document.body.appendChild(this.panel);

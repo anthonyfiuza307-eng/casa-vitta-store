@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Seguro | CASA LUCE</title>
+  <link rel="icon" type="image/png" href="assets/logo-casa-luce.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="custom-cro.css">
+
+  <style>
+    :root {
+      --cv-green: #233329;
+      --cv-green-hover: #19251e;
+      --cv-cream: #faf9f5;
+      --cv-border: #edebe7;
+      --cv-text: #222222;
+      --cv-text-muted: #666666;
+      --cv-red: #d32f2f;
+      --cv-pix-green: #2e7d32;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--cv-cream);
+      color: var(--cv-text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Seguro */
+    .chk-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--cv-border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .chk-header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chk-logo img {
+      max-height: 28px;
+      width: auto;
+      display: block;
+    }
+    .chk-security-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cv-pix-green);
+      background: #edf7ee;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+    .chk-security-tag svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* Container Principal */
+    .chk-container {
+      max-width: 1120px;
+      margin: 32px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .chk-container {
+        grid-template-columns: 1fr;
+        margin: 16px auto;
+        padding: 0 16px;
+        gap: 24px;
+      }
+    }
+
+    /* Card Box Padrão */
+    .chk-card {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid var(--cv-border);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .chk-card-title {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--cv-green);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chk-step-num {
+      background: var(--cv-green);
+      color: #ffffff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* Grid do Formulário */
+    .chk-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .chk-col-full {
+      grid-column: span 2;
+    }
+    @media (max-width: 600px) {
+      .chk-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .chk-col-full {
+        grid-column: span 1;
+      }
+    }
+
+    .chk-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+    .chk-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333333;
+    }
+    .chk-label span.req {
+      color: var(--cv-red);
+    }
+    .chk-input-wrap {
+      position: relative;
+    }
+    .chk-input {
+      width: 100%;
+      height: 46px;
+      padding: 0 14px;
+      font-family: inherit;
+      font-size: 14.5px;
+      color: #222222;
+      background: #ffffff;
+      border: 1.5px solid #dcdad5;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .chk-input:focus {
+      border-color: var(--cv-green);
+      box-shadow: 0 0 0 3px rgba(35, 51, 41, 0.12);
+    }
+    .chk-input.is-invalid {
+      border-color: var(--cv-red) !important;
+      background-color: #fff9f9;
+    }
+    .chk-input.is-valid {
+      border-color: var(--cv-pix-green);
+    }
+    .chk-error-msg {
+      font-size: 12px;
+      color: var(--cv-red);
+      margin-top: 2px;
+      display: none;
+      font-weight: 500;
+    }
+    .chk-input.is-invalid + .chk-error-msg,
+    .chk-error-msg.show {
+      display: block;
+    }
+
+    /* Indicador de carregamento de CEP */
+    .chk-cep-loader {
+      position: absolute;
+      right: 12px;
+      top: 14px;
+      font-size: 12px;
+      color: var(--cv-green);
+      display: none;
+      font-weight: 500;
+    }
+
+    /* Resumo do Pedido */
+    .chk-order-summary {
+      position: sticky;
+      top: 90px;
+    }
+    .chk-summary-items {
+      max-height: 280px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+      padding-right: 4px;
+    }
+    .chk-summary-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--cv-border);
+      align-items: center;
+    }
+    .chk-summary-item:last-child {
+      border-bottom: none;
+    }
+    .chk-item-img {
+      width: 58px;
+      height: 58px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #f0eee9;
+      flex-shrink: 0;
+    }
+    .chk-item-details {
+      flex: 1;
+      min-width: 0;
+    }
+    .chk-item-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1a1a1a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .chk-item-sub {
+      font-size: 12px;
+      color: var(--cv-text-muted);
+      margin-top: 2px;
+    }
+    .chk-item-price {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--cv-green);
+      text-align: right;
+    }
+
+    .chk-calc-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: #555555;
+      margin-bottom: 10px;
+    }
+    .chk-calc-line.is-total {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 2px solid var(--cv-border);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cv-green);
+    }
+    .chk-badge-free {
+      background: #edf7ee;
+      color: var(--cv-pix-green);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .chk-badge-discount {
+      background: #fde8e8;
+      color: #c93b2b;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* Botão Principal de Submissão */
+    .chk-submit-btn {
+      width: 100%;
+      height: 52px;
+      background: var(--cv-green);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      transition: background 0.25s, transform 0.1s, opacity 0.2s;
+    }
+    .chk-submit-btn:hover:not(:disabled) {
+      background: var(--cv-green-hover);
+      transform: translateY(-1px);
+    }
+    .chk-submit-btn:disabled {
+      background: #a3aba5;
+      cursor: not-allowed;
+      opacity: 0.75;
+      transform: none;
+    }
+
+    /* Tela de Pagamento PIX (Step 2) */
+    .chk-pix-container {
+      display: none;
+      text-align: center;
+      padding: 8px 0;
+    }
+    .chk-pix-badge-success {
+      background: #edf7ee;
+      color: var(--cv-pix-green);
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+    }
+    .chk-pix-amount {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--cv-green);
+      margin: 4px 0 16px;
+    }
+    .chk-pix-timer-box {
+      font-size: 13.5px;
+      color: #666;
+      background: #f8f6f0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 1px solid #e8e4dc;
+    }
+    .chk-pix-timer-val {
+      font-weight: 700;
+      color: #c93b2b;
+    }
+    .chk-qrcode-box {
+      background: #ffffff;
+      border: 2px dashed #d5d1c8;
+      border-radius: 12px;
+      padding: 20px;
+      display: inline-block;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+    .chk-qrcode-img {
+      width: 220px;
+      height: 220px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+    .chk-copy-box {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+    .chk-copy-input {
+      width: 100%;
+      height: 44px;
+      padding: 0 12px;
+      font-family: monospace;
+      font-size: 12px;
+      border: 1px solid #dcdad5;
+      border-radius: 6px;
+      background: #fdfdfd;
+      color: #555555;
+    }
+    .chk-copy-btn {
+      width: 100%;
+      height: 48px;
+      background: var(--cv-pix-green);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .chk-copy-btn:hover {
+      background: #246428;
+    }
+    .chk-copy-feedback {
+      display: none;
+      color: var(--cv-pix-green);
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    /* Radar de status do PIX */
+    .chk-radar-box {
+      margin-top: 24px;
+      padding: 16px;
+      background: #faf8f5;
+      border-radius: 8px;
+      border: 1px solid #ede8e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 13.5px;
+      color: #444444;
+    }
+    .chk-radar-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--cv-pix-green);
+      border-radius: 50%;
+      position: relative;
+    }
+    .chk-radar-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--cv-pix-green);
+      animation: pulse 1.6s infinite ease-out;
+      opacity: 0.8;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.6); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    /* Alerta de Erro */
+    .chk-alert-box {
+      display: none;
+      background: #fde8e8;
+      border: 1px solid #f8b4b4;
+      color: #9b1c1c;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .chk-alert-box.show {
+      display: block;
+    }
+    .chk-alert-retry-btn {
+      margin-top: 8px;
+      padding: 6px 14px;
+      background: #9b1c1c;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Spinner */
+    .chk-spinner {
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Seguro -->
+  <header class="chk-header">
+    <div class="chk-header-inner">
+      <a href="index.html" class="chk-logo" aria-label="Casa Luce">
+        <img src="assets/logo-casa-luce.png" alt="CASA LUCE">
+      </a>
+      <div class="chk-security-tag">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <span>Ambiente Seguro · SSL 256 bits</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="chk-container">
+    
+    <!-- Coluna Esquerda: Formulário de Dados e Tela do PIX -->
+    <section>
+
+      <!-- Alerta de Erro Global -->
+      <div class="chk-alert-box" id="chk-global-alert">
+        <div id="chk-alert-text">Ocorreu um erro ao processar.</div>
+        <button type="button" class="chk-alert-retry-btn" id="chk-alert-retry">Tentar Novamente</button>
+      </div>
+
+      <!-- ETAPA 1: Formulário de Dados do Cliente -->
+      <div class="chk-card" id="chk-step-form">
+        <h2 class="chk-card-title">
+          <span class="chk-step-num">1</span>
+          <span>Dados Pessoais e Entrega</span>
+        </h2>
+
+        <form id="checkout-form" novalidate>
+          <div class="chk-form-grid">
+            
+            <!-- Nome Completo -->
+            <div class="chk-field chk-col-full">
+              <label class="chk-label" for="chk-name">Nome completo <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-name" class="chk-input" placeholder="Ex: Maria Oliveira Silva" required autocomplete="name">
+                <div class="chk-error-msg" id="err-name">Informe seu nome e sobrenome completos.</div>
+              </div>
+            </div>
+
+            <!-- Telefone com DDD -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-phone">Telefone celular (com DDD) <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="tel" id="chk-phone" class="chk-input" placeholder="(11) 99999-9999" maxlength="15" required autocomplete="tel">
+                <div class="chk-error-msg" id="err-phone">Informe um DDD válido e número (10 ou 11 dígitos).</div>
+              </div>
+            </div>
+
+            <!-- E-mail -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-email">E-mail <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="email" id="chk-email" class="chk-input" placeholder="seuemail@exemplo.com" required autocomplete="email">
+                <div class="chk-error-msg" id="err-email">Informe um e-mail válido para receber o pedido.</div>
+              </div>
+            </div>
+
+            <!-- CPF -->
+            <div class="chk-field chk-col-full">
+              <label class="chk-label" for="chk-cpf">CPF (apenas números ou com pontos) <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-cpf" class="chk-input" placeholder="000.000.000-00" maxlength="14" required inputmode="numeric">
+                <div class="chk-error-msg" id="err-cpf">CPF inválido. Verifique os números digitados.</div>
+              </div>
+            </div>
+
+            <!-- CEP -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-cep">CEP de entrega <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-cep" class="chk-input" placeholder="00000-000" maxlength="9" required inputmode="numeric" autocomplete="postal-code">
+                <span class="chk-cep-loader" id="chk-cep-loading">Buscando...</span>
+                <div class="chk-error-msg" id="err-cep">CEP inválido ou não encontrado.</div>
+              </div>
+            </div>
+
+            <!-- Número -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-number">Número <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-number" class="chk-input" placeholder="Ex: 120" required>
+                <div class="chk-error-msg" id="err-number">Informe o número do endereço.</div>
+              </div>
+            </div>
+
+            <!-- Endereço / Rua -->
+            <div class="chk-field chk-col-full">
+              <label class="chk-label" for="chk-street">Rua / Logradouro <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-street" class="chk-input" placeholder="Rua, Avenida, Alameda..." required>
+                <div class="chk-error-msg" id="err-street">Informe o endereço.</div>
+              </div>
+            </div>
+
+            <!-- Complemento (opcional) -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-complement">Complemento <span style="font-weight: 400; color: #888;">(opcional)</span></label>
+              <input type="text" id="chk-complement" class="chk-input" placeholder="Apto, Bloco, Casa 2">
+            </div>
+
+            <!-- Bairro -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-neighborhood">Bairro <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-neighborhood" class="chk-input" placeholder="Bairro" required>
+                <div class="chk-error-msg" id="err-neighborhood">Informe o bairro.</div>
+              </div>
+            </div>
+
+            <!-- Cidade -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-city">Cidade <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-city" class="chk-input" placeholder="Cidade" required>
+                <div class="chk-error-msg" id="err-city">Informe a cidade.</div>
+              </div>
+            </div>
+
+            <!-- Estado (UF) -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-state">Estado (UF) <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-state" class="chk-input" placeholder="SP" maxlength="2" style="text-transform: uppercase;" required>
+                <div class="chk-error-msg" id="err-state">Informe o estado (UF).</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Botão de Avançar para PIX -->
+          <button type="submit" class="chk-submit-btn" id="chk-btn-submit" disabled>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span id="chk-btn-submit-text">PAGAR COM PIX (5% OFF)</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- ETAPA 2: Tela do PIX (QR Code e Copia e Cola) -->
+      <div class="chk-card chk-pix-container" id="chk-step-pix">
+        <div class="chk-pix-badge-success">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Pedido Reservado com Sucesso!</span>
+        </div>
+
+        <h3 style="font-family: 'Lora', serif; font-size: 22px; color: var(--cv-green);">Efetue o pagamento via PIX</h3>
+        <p style="font-size: 13.5px; color: #666666; margin-top: 4px;">Abra o app do seu banco e escolha pagar com PIX Copia e Cola ou ler o QR Code.</p>
+
+        <div class="chk-pix-amount" id="chk-pix-amount-val">R$ 0,00</div>
+
+        <div class="chk-pix-timer-box">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Tempo restante para pagar:</span>
+          <span class="chk-pix-timer-val" id="chk-pix-countdown">15:00</span>
+        </div>
+
+        <!-- Box do QR Code -->
+        <div class="chk-qrcode-box">
+          <img src="" alt="QR Code PIX" id="chk-qrcode-img" class="chk-qrcode-img">
+        </div>
+
+        <!-- Box Copia e Cola -->
+        <div class="chk-copy-box">
+          <label class="chk-label" style="color: #444;">Código PIX Copia e Cola:</label>
+          <input type="text" id="chk-pix-copia-cola" class="chk-copy-input" readonly>
+          <button type="button" class="chk-copy-btn" id="chk-btn-copy">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>COPIAR CÓDIGO PIX</span>
+          </button>
+          <div class="chk-copy-feedback" id="chk-copy-success">✓ Código PIX copiado com sucesso!</div>
+        </div>
+
+        <!-- Radar de Verificação Automática -->
+        <div class="chk-radar-box">
+          <div class="chk-radar-dot"></div>
+          <span>Aguardando confirmação bancária em tempo real...</span>
+        </div>
+
+        <div style="margin-top: 24px; font-size: 12.5px; color: #888888;">
+          ID do Pedido: <strong id="chk-order-id-label">-</strong>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Coluna Direita: Resumo do Pedido -->
+    <aside class="chk-order-summary">
+      <div class="chk-card">
+        <h3 class="chk-card-title" style="font-size: 18px; margin-bottom: 16px;">
+          <span>Resumo do Pedido</span>
+        </h3>
+
+        <!-- Lista dos Itens do Carrinho -->
+        <div class="chk-summary-items" id="chk-items-list">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <!-- Linhas de Cálculo -->
+        <div class="chk-calc-line">
+          <span>Subtotal</span>
+          <span id="chk-subtotal-val">R$ 0,00</span>
+        </div>
+        <div class="chk-calc-line">
+          <span>Frete Especial</span>
+          <span class="chk-badge-free">GRÁTIS</span>
+        </div>
+        <div class="chk-calc-line">
+          <span>Desconto PIX <span class="chk-badge-discount">5% OFF</span></span>
+          <span style="color: #c93b2b; font-weight: 600;" id="chk-discount-val">- R$ 0,00</span>
+        </div>
+        <div class="chk-calc-line is-total">
+          <span>Total no PIX</span>
+          <span id="chk-total-val">R$ 0,00</span>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--cv-border); font-size: 12px; color: #777; display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            <span>Envio com código de rastreamento para todo o Brasil</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Garantia incondicional de 7 dias após o recebimento</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Script do Checkout com Validações e Integração PIX -->
+  <script>
+    (function() {
+      // Estado do Carrinho
+      var cartItems = [];
+      try {
+        cartItems = JSON.parse(localStorage.getItem('casaluce_cart') || '[]');
+      } catch (e) {
+        cartItems = [];
+      }
+
+      // Se carrinho vazio, redirecionar de volta à loja
+      if (!Array.isArray(cartItems) || cartItems.length === 0) {
+        alert('Sua sacola está vazia. Redirecionando para a loja...');
+        window.location.href = 'index.html';
+        return;
+      }
+
+      // Elementos do DOM
+      var form = document.getElementById('checkout-form');
+      var btnSubmit = document.getElementById('chk-btn-submit');
+      var btnSubmitText = document.getElementById('chk-btn-submit-text');
+      var globalAlert = document.getElementById('chk-global-alert');
+      var alertText = document.getElementById('chk-alert-text');
+      var alertRetry = document.getElementById('chk-alert-retry');
+
+      var inputName = document.getElementById('chk-name');
+      var inputPhone = document.getElementById('chk-phone');
+      var inputEmail = document.getElementById('chk-email');
+      var inputCpf = document.getElementById('chk-cpf');
+      var inputCep = document.getElementById('chk-cep');
+      var inputNumber = document.getElementById('chk-number');
+      var inputStreet = document.getElementById('chk-street');
+      var inputComplement = document.getElementById('chk-complement');
+      var inputNeighborhood = document.getElementById('chk-neighborhood');
+      var inputCity = document.getElementById('chk-city');
+      var inputState = document.getElementById('chk-state');
+      var cepLoading = document.getElementById('chk-cep-loading');
+
+      // Elementos do PIX
+      var stepForm = document.getElementById('chk-step-form');
+      var stepPix = document.getElementById('chk-step-pix');
+      var pixAmountVal = document.getElementById('chk-pix-amount-val');
+      var qrcodeImg = document.getElementById('chk-qrcode-img');
+      var pixCopiaColaInput = document.getElementById('chk-pix-copia-cola');
+      var btnCopy = document.getElementById('chk-btn-copy');
+      var copySuccessMsg = document.getElementById('chk-copy-success');
+      var pixCountdownEl = document.getElementById('chk-pix-countdown');
+      var orderIdLabel = document.getElementById('chk-order-id-label');
+
+      var pollingInterval = null;
+      var countdownTimer = null;
+      var currentTransactionId = null;
+      var currentReference = null;
+
+      // ----------------------------------------------------------------------
+      // 1. RENDER DO RESUMO DO PEDIDO
+      // ----------------------------------------------------------------------
+      function renderSummary() {
+        var itemsListEl = document.getElementById('chk-items-list');
+        var subtotalEl = document.getElementById('chk-subtotal-val');
+        var discountEl = document.getElementById('chk-discount-val');
+        var totalEl = document.getElementById('chk-total-val');
+
+        var subtotal = 0;
+        itemsListEl.innerHTML = cartItems.map(function(item) {
+          var price = parseFloat(item.price) || 79.99;
+          var qty = parseInt(item.quantity, 10) || 1;
+          var itemTotal = price * qty;
+          subtotal += itemTotal;
+
+          return '<div class="chk-summary-item">' +
+                 '  <img src="' + (item.image || 'assets/logo-casa-luce.png') + '" alt="' + item.title + '" class="chk-item-img">' +
+                 '  <div class="chk-item-details">' +
+                 '    <div class="chk-item-name">' + item.title + '</div>' +
+                 '    <div class="chk-item-sub">' + (item.variantTitle && item.variantTitle !== 'Default Title' ? item.variantTitle + ' · ' : '') + 'Qtd: ' + qty + '</div>' +
+                 '  </div>' +
+                 '  <div class="chk-item-price">' + formatCurrency(itemTotal) + '</div>' +
+                 '</div>';
+        }).join('');
+
+        var discount = subtotal * 0.05;
+        var total = subtotal - discount;
+
+        subtotalEl.textContent = formatCurrency(subtotal);
+        discountEl.textContent = '- ' + formatCurrency(discount);
+        totalEl.textContent = formatCurrency(total);
+      }
+
+      function formatCurrency(val) {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+      }
+
+      renderSummary();
+
+      // ----------------------------------------------------------------------
+      // 2. MÁSCARAS E VALIDAÇÕES EM TEMPO REAL
+      // ----------------------------------------------------------------------
+      
+      // Validação Oficial de CPF (Módulo 11)
+      function isValidCPF(cpf) {
+        if (!cpf) return false;
+        var clean = cpf.replace(/\D/g, '');
+        if (clean.length !== 11) return false;
+        if (/^(\d)\1{10}$/.test(clean)) return false;
+
+        var sum = 0;
+        for (var i = 0; i < 9; i++) sum += parseInt(clean.charAt(i), 10) * (10 - i);
+        var rev = (sum * 10) % 11;
+        if (rev === 10 || rev === 11) rev = 0;
+        if (rev !== parseInt(clean.charAt(9), 10)) return false;
+
+        sum = 0;
+        for (var j = 0; j < 10; j++) sum += parseInt(clean.charAt(j), 10) * (11 - j);
+        rev = (sum * 10) % 11;
+        if (rev === 10 || rev === 11) rev = 0;
+        if (rev !== parseInt(clean.charAt(10), 10)) return false;
+
+        return true;
+      }
+
+      // Validação de Telefone (10 ou 11 dígitos, DDD válido)
+      function isValidPhone(phone) {
+        if (!phone) return false;
+        var clean = phone.replace(/\D/g, '');
+        if (clean.length !== 10 && clean.length !== 11) return false;
+        var ddd = parseInt(clean.substring(0, 2), 10);
+        if (ddd < 11 || ddd > 99) return false;
+        if (clean.length === 11 && clean.charAt(2) !== '9') return false;
+        return true;
+      }
+
+      // Validação de E-mail
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email).trim().toLowerCase());
+      }
+
+      // Validação de Nome Completo
+      function isValidName(name) {
+        var parts = String(name).trim().split(/\s+/).filter(Boolean);
+        return parts.length >= 2 && parts.every(function(p) { return p.length >= 2; });
+      }
+
+      // Máscara e Validação de CPF
+      inputCpf.addEventListener('input', function(e) {
+        var v = e.target.value.replace(/\D/g, '').substring(0, 11);
+        if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+        else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
+        else if (v.length > 3) v = v.replace(/(\d{3})(\d{1,3})/, '$1.$2');
+        e.target.value = v;
+
+        if (v.replace(/\D/g, '').length === 11) {
+          markField(inputCpf, isValidCPF(v), document.getElementById('err-cpf'));
+        } else {
+          resetField(inputCpf, document.getElementById('err-cpf'));
+        }
+        checkFormValidity();
+      });
+
+      inputCpf.addEventListener('blur', function() {
+        markField(inputCpf, isValidCPF(inputCpf.value), document.getElementById('err-cpf'));
+        checkFormValidity();
+      });
+
+      // Máscara e Validação de Telefone
+      inputPhone.addEventListener('input', function(e) {
+        var v = e.target.value.replace(/\D/g, '').substring(0, 11);
+        if (v.length > 10) v = v.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        else if (v.length > 6) v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+        else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+        e.target.value = v;
+
+        if (v.replace(/\D/g, '').length >= 10) {
+          markField(inputPhone, isValidPhone(v), document.getElementById('err-phone'));
+        } else {
+          resetField(inputPhone, document.getElementById('err-phone'));
+        }
+        checkFormValidity();
+      });
+
+      inputPhone.addEventListener('blur', function() {
+        markField(inputPhone, isValidPhone(inputPhone.value), document.getElementById('err-phone'));
+        checkFormValidity();
+      });
+
+      // Validação de Nome
+      inputName.addEventListener('input', function() {
+        if (inputName.value.trim().length > 3) {
+          markField(inputName, isValidName(inputName.value), document.getElementById('err-name'));
+        } else {
+          resetField(inputName, document.getElementById('err-name'));
+        }
+        checkFormValidity();
+      });
+      inputName.addEventListener('blur', function() {
+        markField(inputName, isValidName(inputName.value), document.getElementById('err-name'));
+        checkFormValidity();
+      });
+
+      // Validação de E-mail
+      inputEmail.addEventListener('input', function() {
+        if (inputEmail.value.includes('@')) {
+          markField(inputEmail, isValidEmail(inputEmail.value), document.getElementById('err-email'));
+        } else {
+          resetField(inputEmail, document.getElementById('err-email'));
+        }
+        checkFormValidity();
+      });
+      inputEmail.addEventListener('blur', function() {
+        markField(inputEmail, isValidEmail(inputEmail.value), document.getElementById('err-email'));
+        checkFormValidity();
+      });
+
+      // Validação e Consulta de CEP (ViaCEP + BrasilAPI fallback)
+      var cepValido = false;
+      inputCep.addEventListener('input', function(e) {
+        var v = e.target.value.replace(/\D/g, '').substring(0, 8);
+        if (v.length > 5) v = v.replace(/(\d{5})(\d{1,3})/, '$1-$2');
+        e.target.value = v;
+
+        var cleanCep = v.replace(/\D/g, '');
+        if (cleanCep.length === 8) {
+          consultarCep(cleanCep);
+        } else {
+          cepValido = false;
+          resetField(inputCep, document.getElementById('err-cep'));
+          checkFormValidity();
+        }
+      });
+
+      function consultarCep(cep) {
+        cepLoading.style.display = 'block';
+        resetField(inputCep, document.getElementById('err-cep'));
+
+        // 1. Tenta ViaCEP
+        fetch('https://viacep.com.br/ws/' + cep + '/json/')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data && !data.erro) {
+              aplicarDadosEndereco(data.logradouro, data.bairro, data.localidade, data.uf);
+            } else {
+              throw new Error('ViaCEP erro');
+            }
+          })
+          .catch(function() {
+            // 2. Fallback BrasilAPI
+            return fetch('https://brasilapi.com.br/api/cep/v1/' + cep)
+              .then(function(res) { return res.json(); })
+              .then(function(data) {
+                if (data && data.street) {
+                  aplicarDadosEndereco(data.street, data.neighborhood, data.city, data.state);
+                } else {
+                  throw new Error('BrasilAPI erro');
+                }
+              });
+          })
+          .catch(function() {
+            cepLoading.style.display = 'none';
+            cepValido = false;
+            markField(inputCep, false, document.getElementById('err-cep'));
+            document.getElementById('err-cep').textContent = 'CEP inválido ou não encontrado.';
+            checkFormValidity();
+          });
+      }
+
+      function aplicarDadosEndereco(rua, bairro, cidade, uf) {
+        cepLoading.style.display = 'none';
+        cepValido = true;
+        markField(inputCep, true, document.getElementById('err-cep'));
+
+        if (rua) inputStreet.value = rua;
+        if (bairro) inputNeighborhood.value = bairro;
+        if (cidade) inputCity.value = cidade;
+        if (uf) inputState.value = uf;
+
+        // Focar automaticamente no campo número
+        inputNumber.focus();
+        checkFormValidity();
+      }
+
+      // Validação de Campos de Endereço
+      [inputNumber, inputStreet, inputNeighborhood, inputCity, inputState].forEach(function(field) {
+        field.addEventListener('input', checkFormValidity);
+        field.addEventListener('blur', function() {
+          var errEl = document.getElementById('err-' + field.id.replace('chk-', ''));
+          markField(field, !!field.value.trim(), errEl);
+          checkFormValidity();
+        });
+      });
+
+      function markField(field, isValid, errorEl) {
+        if (isValid) {
+          field.classList.remove('is-invalid');
+          field.classList.add('is-valid');
+          if (errorEl) errorEl.classList.remove('show');
+        } else {
+          field.classList.remove('is-valid');
+          field.classList.add('is-invalid');
+          if (errorEl) errorEl.classList.add('show');
+        }
+      }
+
+      function resetField(field, errorEl) {
+        field.classList.remove('is-valid', 'is-invalid');
+        if (errorEl) errorEl.classList.remove('show');
+      }
+
+      function checkFormValidity() {
+        var valid =
+          isValidName(inputName.value) &&
+          isValidPhone(inputPhone.value) &&
+          isValidEmail(inputEmail.value) &&
+          isValidCPF(inputCpf.value) &&
+          cepValido &&
+          inputNumber.value.trim().length > 0 &&
+          inputStreet.value.trim().length > 0 &&
+          inputNeighborhood.value.trim().length > 0 &&
+          inputCity.value.trim().length > 0 &&
+          inputState.value.trim().length > 0;
+
+        btnSubmit.disabled = !valid;
+        return valid;
+      }
+
+      // ----------------------------------------------------------------------
+      // 3. ENVIO DO PEDIDO PARA A API ELEVYPAY
+      // ----------------------------------------------------------------------
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!checkFormValidity()) return;
+
+        // Travar contra duplo clique
+        btnSubmit.disabled = true;
+        btnSubmitText.innerHTML = '<span class="chk-spinner"></span> Gerando cobrança PIX...';
+        hideAlert();
+
+        var payload = {
+          customer: {
+            name: inputName.value.trim(),
+            email: inputEmail.value.trim().toLowerCase(),
+            phone: inputPhone.value.replace(/\D/g, ''),
+            document: inputCpf.value.replace(/\D/g, '')
+          },
+          address: {
+            zipcode: inputCep.value.replace(/\D/g, ''),
+            street: inputStreet.value.trim(),
+            number: inputNumber.value.trim(),
+            complement: inputComplement.value.trim(),
+            neighborhood: inputNeighborhood.value.trim(),
+            city: inputCity.value.trim(),
+            state: inputState.value.trim().toUpperCase()
+          },
+          items: cartItems.map(function(item) {
+            return {
+              handle: item.handle || item.id,
+              id: item.id,
+              title: item.title,
+              variantTitle: item.variantTitle,
+              quantity: item.quantity,
+              price: item.price
+            };
+          })
+        };
+
+        fetch('/api/pix', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function(res) {
+          return res.json().then(function(data) {
+            return { ok: res.ok, status: res.status, data: data };
+          });
+        })
+        .then(function(result) {
+          if (!result.ok || !result.data.success) {
+            throw new Error(result.data.error || 'Não foi possível gerar a cobrança PIX. Verifique os dados informados.');
+          }
+
+          // Transição para a tela de pagamento PIX
+          exibirTelaPix(result.data);
+        })
+        .catch(function(err) {
+          console.error('[ERRO CHECKOUT]', err);
+          showAlert(err.message || 'Erro ao processar o pagamento. Tente novamente.');
+          btnSubmit.disabled = false;
+          btnSubmitText.textContent = 'PAGAR COM PIX (5% OFF)';
+        });
+      });
+
+      function showAlert(msg) {
+        alertText.textContent = msg;
+        globalAlert.classList.add('show');
+        globalAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function hideAlert() {
+        globalAlert.classList.remove('show');
+      }
+
+      alertRetry.addEventListener('click', function() {
+        hideAlert();
+        checkFormValidity();
+      });
+
+      // ----------------------------------------------------------------------
+      // 4. TELA DO PIX (QR CODE, COPIA E COLA E POLLING DE STATUS)
+      // ----------------------------------------------------------------------
+      function exibirTelaPix(data) {
+        stepForm.style.display = 'none';
+        stepPix.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        currentTransactionId = data.transaction_id;
+        currentReference = data.reference || data.id;
+
+        pixAmountVal.textContent = data.amount_formatted || formatCurrency(data.amount / 100);
+        orderIdLabel.textContent = currentReference;
+
+        // QR Code
+        if (data.qr_code_base64) {
+          qrcodeImg.src = data.qr_code_base64.startsWith('data:') ? data.qr_code_base64 : 'data:image/png;base64,' + data.qr_code_base64;
+        } else if (data.qr_code) {
+          // Fallback para gerador de QR Code limpo
+          qrcodeImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + encodeURIComponent(data.qr_code);
+        }
+
+        // Código Copia e Cola
+        pixCopiaColaInput.value = data.qr_code || '';
+
+        // Copiar Código com 1 clique
+        btnCopy.onclick = function() {
+          pixCopiaColaInput.select();
+          pixCopiaColaInput.setSelectionRange(0, 99999);
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(pixCopiaColaInput.value);
+          } else {
+            document.execCommand('copy');
+          }
+          copySuccessMsg.style.display = 'block';
+          btnCopy.style.background = '#1e5222';
+          btnCopy.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span>CÓDIGO COPIADO!</span>';
+          setTimeout(function() {
+            copySuccessMsg.style.display = 'none';
+            btnCopy.style.background = 'var(--cv-pix-green)';
+            btnCopy.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>COPIAR CÓDIGO PIX</span>';
+          }, 3500);
+        };
+
+        // Iniciar Timer Regressivo de 15 minutos
+        iniciarTimer(15 * 60);
+
+        // Iniciar Polling de Status a cada 4 segundos
+        iniciarPolling(currentTransactionId, currentReference);
+      }
+
+      function iniciarTimer(durationSeconds) {
+        var timer = durationSeconds;
+        clearInterval(countdownTimer);
+        countdownTimer = setInterval(function() {
+          var minutes = parseInt(timer / 60, 10);
+          var seconds = parseInt(timer % 60, 10);
+          minutes = minutes < 10 ? '0' + minutes : minutes;
+          seconds = seconds < 10 ? '0' + seconds : seconds;
+
+          pixCountdownEl.textContent = minutes + ':' + seconds;
+
+          if (--timer < 0) {
+            clearInterval(countdownTimer);
+            pixCountdownEl.textContent = 'Expirado';
+            showAlert('Tempo para pagamento expirou. Por favor, gere uma nova cobrança.');
+          }
+        }, 1000);
+      }
+
+      function iniciarPolling(transId, ref) {
+        clearInterval(pollingInterval);
+        pollingInterval = setInterval(function() {
+          var url = '/api/pix/status?id=' + encodeURIComponent(transId || '') + '&reference=' + encodeURIComponent(ref || '');
+          fetch(url)
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+              if (data && (data.approved || data.status === 'approved' || data.status === 'APPROVED')) {
+                clearInterval(pollingInterval);
+                clearInterval(countdownTimer);
+
+                // Salvar dados do pedido aprovado para página de obrigado
+                try {
+                  sessionStorage.setItem('last_order', JSON.stringify({
+                    id: transId,
+                    reference: ref,
+                    customer: {
+                      name: inputName.value.trim(),
+                      email: inputEmail.value.trim(),
+                      phone: inputPhone.value
+                    },
+                    address: {
+                      street: inputStreet.value,
+                      number: inputNumber.value,
+                      neighborhood: inputNeighborhood.value,
+                      city: inputCity.value,
+                      state: inputState.value,
+                      zipcode: inputCep.value
+                    },
+                    items: cartItems,
+                    total: pixAmountVal.textContent
+                  }));
+                } catch (e) {}
+
+                // Limpar carrinho
+                localStorage.removeItem('casaluce_cart');
+
+                // Redirecionar para página de obrigado
+                window.location.href = 'obrigado.html?id=' + encodeURIComponent(transId || '') + '&ref=' + encodeURIComponent(ref || '');
+              }
+            })
+            .catch(function(err) {
+              console.warn('[POLLING PIX STATUS]', err);
+            });
+        }, 4000);
+      }
+
+    })();
+  </script>
+
+</body>
+</html>
