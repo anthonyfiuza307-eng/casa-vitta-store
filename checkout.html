@@ -643,7 +643,7 @@
           <!-- Botão de Avançar para PIX -->
           <button type="submit" class="chk-submit-btn" id="chk-btn-submit" disabled>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            <span id="chk-btn-submit-text">PAGAR COM PIX (5% OFF)</span>
+            <span id="chk-btn-submit-text">PAGAR COM PIX</span>
           </button>
         </form>
       </div>
@@ -716,12 +716,9 @@
           <span>Frete Especial</span>
           <span class="chk-badge-free">GRÁTIS</span>
         </div>
-        <div class="chk-calc-line">
-          <span>Desconto PIX <span class="chk-badge-discount">5% OFF</span></span>
-          <span style="color: #c93b2b; font-weight: 600;" id="chk-discount-val">- R$ 0,00</span>
-        </div>
+        
         <div class="chk-calc-line is-total">
-          <span>Total no PIX</span>
+          <span>Total</span>
           <span id="chk-total-val">R$ 0,00</span>
         </div>
 
@@ -806,7 +803,7 @@
 
         var subtotal = 0;
         itemsListEl.innerHTML = cartItems.map(function(item) {
-          var price = parseFloat(item.price) || 79.99;
+          var price = parseFloat(item.price) || 96.90;
           var qty = parseInt(item.quantity, 10) || 1;
           var itemTotal = price * qty;
           subtotal += itemTotal;
@@ -821,11 +818,9 @@
                  '</div>';
         }).join('');
 
-        var discount = subtotal * 0.05;
-        var total = subtotal - discount;
-
+        var total = subtotal;
         subtotalEl.textContent = formatCurrency(subtotal);
-        discountEl.textContent = '- ' + formatCurrency(discount);
+        if (discountEl) discountEl.textContent = 'R$ 0,00';
         totalEl.textContent = formatCurrency(total);
       }
 
@@ -1126,7 +1121,7 @@
           console.error('[ERRO CHECKOUT]', err);
           showAlert(err.message || 'Erro ao processar o pagamento. Tente novamente.');
           btnSubmit.disabled = false;
-          btnSubmitText.textContent = 'PAGAR COM PIX (5% OFF)';
+          btnSubmitText.textContent = 'PAGAR COM PIX';
         });
       });
 

@@ -619,7 +619,7 @@
   <!-- 1. TOP BAR INSTITUCIONAL VERDE-ESCURO (#233329)                           -->
   <!-- ========================================================================= -->
   <aside class="cv-topbar">
-    Coleção de Natal 2026 · Envio para todo o Brasil
+    Coleção de Natal 2026 · Frete Grátis para todo o Brasil
   </aside>
 
   <!-- ========================================================================= -->
@@ -717,12 +717,11 @@
         <!-- Bloco de Preço -->
         <div class="cv-pdp-pricing-block">
           <div class="cv-pdp-price-row">
-            <span class="cv-pdp-price-current" id="pdp-price-current">R$ 0,00</span>
-            <span class="cv-pdp-price-compare" id="pdp-price-compare">R$ 0,00</span>
-            <span class="cv-pdp-discount-badge" id="pdp-badge-discount">0% OFF</span>
+            <span class="cv-pdp-price-current" id="pdp-price-current">R$ 96,90</span>
+            <span class="cv-pdp-price-compare" id="pdp-price-compare">R$ 139,99</span>
+            <span class="cv-pdp-discount-badge" id="pdp-badge-discount">31% OFF</span>
           </div>
-          <div class="cv-pdp-installments" id="pdp-installments-text">até 12x de R$ 0,00</div>
-          <div class="cv-pdp-pix" id="pdp-pix-text">ou R$ 0,00 no Pix</div>
+          <div class="cv-pdp-installments" id="pdp-installments-text">até 12x de R$ 8,08</div>
           <a class="cv-pdp-payment-link" id="pdp-open-payment-modal">Opções de pagamento</a>
         </div>
 
@@ -744,7 +743,7 @@
           </button>
         </div>
         <button type="button" class="cv-buy-now-btn" id="pdp-buy-now-btn">
-          COMPRAR AGORA (PIX 5% OFF)
+          COMPRAR AGORA
         </button>
 
         <!-- Boxes de Confiança -->
@@ -752,7 +751,7 @@
           <div class="cv-trust-box-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
             <div>
-              <strong>Envio para todo o Brasil</strong><br>
+              <strong>Frete Grátis para todo o Brasil</strong><br>
               Código de rastreio enviado por e-mail e WhatsApp.
             </div>
           </div>
@@ -792,7 +791,7 @@
     <div class="cv-trust-bar-inner">
       <div class="cv-trust-item">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-        <span>Envio para todo o Brasil</span>
+        <span>Frete Grátis para todo o Brasil</span>
       </div>
       <div class="cv-trust-item">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
@@ -1041,7 +1040,7 @@
         // Atualização de Preços
         function updatePricing() {
           var price = selectedVariant ? parseFloat(selectedVariant.price) : parseFloat(product.price);
-          if (isNaN(price)) price = 79.99;
+          if (isNaN(price)) price = 96.90;
 
           var comparePrice = selectedVariant && selectedVariant.compare_at_price ? parseFloat(selectedVariant.compare_at_price) : parseFloat(product.compare_at_price);
           if (isNaN(comparePrice) || comparePrice <= price) {
@@ -1051,20 +1050,20 @@
           var formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
           var formattedCompare = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(comparePrice);
           var installmentVal = (price / 12).toFixed(2).replace('.', ',');
-          var pixVal = (price * 0.95).toFixed(2).replace('.', ',');
+          
           var discountPct = Math.round(((comparePrice - price) / comparePrice) * 100);
 
           document.getElementById('pdp-price-current').textContent = formattedPrice;
           document.getElementById('pdp-price-compare').textContent = formattedCompare;
           document.getElementById('pdp-badge-discount').textContent = discountPct + '% OFF';
           document.getElementById('pdp-installments-text').textContent = 'até 12x de R$ ' + installmentVal;
-          document.getElementById('pdp-pix-text').textContent = 'ou R$ ' + pixVal + ' no Pix';
+          
 
           // Atualizar modal de parcelamento
           var modalList = document.getElementById('payment-modal-installments-list');
           if (modalList) {
             modalList.innerHTML =
-              '<div>1x sem juros no Cartão ou Pix: <strong>R$ ' + pixVal + '</strong> (5% OFF)</div>' +
+              '<div>1x sem juros no Cartão ou Pix: <strong>' + formattedPrice + '</strong></div>' +
               '<div>2x sem juros de <strong>R$ ' + (price / 2).toFixed(2).replace('.', ',') + '</strong></div>' +
               '<div>3x sem juros de <strong>R$ ' + (price / 3).toFixed(2).replace('.', ',') + '</strong></div>' +
               '<div>6x de <strong>R$ ' + ((price * 1.08) / 6).toFixed(2).replace('.', ',') + '</strong></div>' +
@@ -1228,8 +1227,8 @@
         if (recGrid && recommendedKeys.length > 0) {
           recGrid.innerHTML = recommendedKeys.map(function(k) {
             var p = catalog[k];
-            var pPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.price || 79.99);
-            var pInst = ((p.price || 79.99) / 12).toFixed(2).replace('.', ',');
+            var pPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.price || 96.90);
+            var pInst = ((p.price || 96.90) / 12).toFixed(2).replace('.', ',');
             return '<a href="produto.html?id=' + p.handle + '" class="cv-rec-card">' +
                    '  <div class="cv-rec-img-box">' +
                    '    <img src="' + p.images[0] + '" alt="' + p.title + '" loading="lazy">' +

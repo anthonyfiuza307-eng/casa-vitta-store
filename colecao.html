@@ -387,7 +387,7 @@
 
   <!-- 1. Top Bar -->
   <aside class="cv-topbar">
-    Coleção de Natal 2026 · Envio para todo o Brasil
+    Coleção de Natal 2026 · Frete Grátis para todo o Brasil
   </aside>
 
   <!-- 2. Header -->
@@ -477,7 +477,7 @@
     <div class="cv-trust-bar-inner">
       <div class="cv-trust-item">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-        <span>Envio para todo o Brasil</span>
+        <span>Frete Grátis para todo o Brasil</span>
       </div>
       <div class="cv-trust-item">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
@@ -759,7 +759,7 @@
 
         var grid = document.getElementById('cat-products-grid');
         grid.innerHTML = itemsToShow.map(function(p) {
-          var price = parseFloat(p.price) || 79.99;
+          var price = parseFloat(p.price) || 96.90;
           var comparePrice = parseFloat(p.compare_at_price) || (price * 1.5);
           var discountPct = Math.round(((comparePrice - price) / comparePrice) * 100);
           if (discountPct < 5) discountPct = 30;
@@ -782,8 +782,7 @@
                  '      <span class="cv-card-price-compare">' + fCompare + '</span>' +
                  '    </div>' +
                  '    <div class="cv-card-installments">até 12x de R$ ' + inst + '</div>' +
-                 '    <div class="cv-card-pix">ou R$ ' + pix + ' no Pix</div>' +
-                 '    <div class="cv-card-btn">Ver produto</div>' +
+                                  '    <div class="cv-card-btn">Ver produto</div>' +
                  '  </div>' +
                  '</a>';
         }).join('');

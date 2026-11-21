@@ -39,7 +39,7 @@
     addItem(product) {
       const variantTitle = product.variantTitle || '';
       const uniqueId = `${product.id || product.handle}-${variantTitle}`.replace(/\s+/g, '-');
-      const price = parseFloat(product.price) || 79.99;
+      const price = parseFloat(product.price) || 96.90;
       const qtyToAdd = parseInt(product.quantity, 10) || 1;
 
       const existing = this.items.find(item => item.uniqueId === uniqueId);
@@ -163,8 +163,8 @@
             <span id="cro-cart-subtotal-val">R$ 0,00</span>
           </div>
           <div class="cro-cart-summary-line" style="color: #27ae60;">
-            <span>Frete Especial</span>
-            <span style="font-weight: 700;">GRÁTIS</span>
+            <span>Frete</span>
+            <span style="font-weight: 700; color: #2e7d32;">GRÁTIS</span>
           </div>
           <div class="cro-cart-summary-line is-total">
             <span>Valor Total</span>
@@ -381,7 +381,7 @@
         }
 
         if (product) {
-          const price = parseFloat(product.price) || 79.99;
+          const price = parseFloat(product.price) || 96.90;
           const image = (product.images && product.images.length > 0) ? product.images[0] : '';
           const variantTitle = (product.variants && product.variants.length > 0 && product.variants[0].title !== 'Default Title') ? product.variants[0].title : '';
 
@@ -401,7 +401,7 @@
             handle: handle || 'produto',
             title: 'Produto Selecionado',
             variantTitle: '',
-            price: 79.99,
+            price: 96.90,
             image: '',
             quantity: 1
           });
@@ -477,7 +477,7 @@
       'envio': {
         title: 'Envio e Prazos de Entrega',
         content: `
-          <h4>Envio para todo o Brasil</h4>
+          <h4>Frete Grátis para todo o Brasil</h4>
           <p>Enviamos para todas as cidades brasileiras com código de rastreamento enviado por e-mail e WhatsApp logo após a postagem.</p>
           <h4>Prazos Médios</h4>
           <ul>
@@ -658,7 +658,7 @@
 
       resultsBox.innerHTML = matches.map(k => {
         const p = catalog[k];
-        const price = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.price || 79.99);
+        const price = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.price || 96.90);
         const img = (p.images && p.images.length > 0) ? p.images[0] : 'https://via.placeholder.com/60';
         return `
           <a href="produto.html?id=${p.handle}" class="cro-search-item">

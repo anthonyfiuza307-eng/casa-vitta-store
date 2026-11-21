@@ -131,7 +131,7 @@ function maskKey(key) {
 
 /**
  * Cálculo do Amount NO SERVIDOR a partir dos itens do carrinho
- * Aplica desconto de 5% no PIX e retorna em CENTAVOS inteiros
+ * Retorna em CENTAVOS inteiros com base no valor dos produtos
  */
 function calculateOrderAmount(items) {
   if (!Array.isArray(items) || items.length === 0) {
@@ -154,7 +154,7 @@ function calculateOrderAmount(items) {
       if (key) product = catalog[key];
     }
 
-    let officialPrice = 79.99; // fallback seguro
+    let officialPrice = 96.90; // fallback seguro
     let productTitle = item.title || 'Produto Casa Luce';
 
     if (product) {
@@ -188,12 +188,10 @@ function calculateOrderAmount(items) {
     });
   }
 
-  // 5% de desconto no PIX
-  const discount = subtotal * 0.05;
-  const totalWithPixDiscount = subtotal - discount;
-
-  // Converter para CENTAVOS inteiros (ex: R$ 75,99 -> 7599)
-  const amountInCents = Math.round(totalWithPixDiscount * 100);
+  // Sem desconto de 5% no PIX - Valor integral
+  const discount = 0;
+  const total = subtotal;
+  const amountInCents = Math.round(total * 100);
 
   const mainItemName = verifiedItems[0].title;
   const extraCount = verifiedItems.length - 1;
@@ -204,7 +202,7 @@ function calculateOrderAmount(items) {
   return {
     subtotal,
     discount,
-    total: totalWithPixDiscount,
+    total: total,
     amountInCents,
     description: description.substring(0, 100),
     items: verifiedItems
