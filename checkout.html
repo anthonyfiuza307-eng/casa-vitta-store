@@ -93,15 +93,21 @@
 
     /* Container Principal */
     .chk-container {
-      max-width: 1120px;
-      margin: 28px auto;
-      padding: 0 20px;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px;
+      box-sizing: border-box;
       display: grid;
       grid-template-columns: 1fr 400px;
-      gap: 28px;
+      gap: 24px;
       align-items: start;
+    }
+
+    .chk-main-col {
       width: 100%;
       box-sizing: border-box;
+      margin: 0 auto;
     }
 
     /* Card Box Padrão */
@@ -111,8 +117,9 @@
       border: 1px solid var(--cv-border);
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
       padding: 24px;
-      margin-bottom: 24px;
+      margin: 0 auto 16px auto;
       width: 100%;
+      max-width: 100%;
       box-sizing: border-box;
       overflow-x: hidden;
     }
@@ -238,6 +245,7 @@
       top: 90px;
       width: 100%;
       box-sizing: border-box;
+      margin: 0 auto;
     }
     .chk-summary-items {
       max-height: 280px;
@@ -361,6 +369,8 @@
       align-items: center;
       text-align: center;
       width: 100%;
+      max-width: 100%;
+      margin: 0 auto 16px auto;
       padding: 24px 20px;
       box-sizing: border-box;
       overflow-x: hidden;
@@ -384,7 +394,7 @@
       gap: 8px;
       padding: 8px 16px;
       border-radius: 30px;
-      margin-bottom: 14px;
+      margin: 0 auto 14px auto;
       max-width: 100%;
       box-sizing: border-box;
     }
@@ -394,19 +404,25 @@
       color: var(--cv-green);
       margin-bottom: 6px;
       line-height: 1.3;
+      text-align: center;
+      width: 100%;
     }
     .chk-pix-subtitle {
       font-size: 13.5px;
       color: #666666;
-      margin-bottom: 12px;
+      margin: 0 auto 12px auto;
       max-width: 440px;
       line-height: 1.4;
+      text-align: center;
+      width: 100%;
     }
     .chk-pix-amount {
       font-size: 32px;
       font-weight: 700;
       color: var(--cv-green);
-      margin: 6px 0 14px;
+      margin: 6px auto 14px auto;
+      text-align: center;
+      width: 100%;
     }
     .chk-pix-timer-box {
       font-size: 13px;
@@ -418,7 +434,7 @@
       gap: 6px;
       padding: 6px 14px;
       border-radius: 20px;
-      margin-bottom: 20px;
+      margin: 0 auto 20px auto;
       border: 1px solid #e8e4dc;
       max-width: 100%;
       box-sizing: border-box;
@@ -431,18 +447,19 @@
       background: #ffffff;
       border: 2px dashed #d5d1c8;
       border-radius: 12px;
-      padding: 16px;
+      padding: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px auto;
+      margin: 16px auto !important;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-      max-width: 100%;
+      width: 100%;
+      max-width: 210px !important;
       box-sizing: border-box;
     }
     .chk-qrcode-img {
-      width: 210px;
-      max-width: 70vw;
+      width: 100%;
+      max-width: 180px;
       height: auto;
       aspect-ratio: 1 / 1;
       display: block;
@@ -450,7 +467,7 @@
       object-fit: contain;
     }
     .chk-copy-box {
-      margin-top: 6px;
+      margin: 12px auto 0 auto;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -513,11 +530,12 @@
       font-weight: 600;
       text-align: center;
       margin-top: 4px;
+      width: 100%;
     }
 
     /* Radar de status do PIX */
     .chk-radar-box {
-      margin-top: 20px;
+      margin: 20px auto 0 auto;
       padding: 12px 16px;
       background: #faf8f5;
       border-radius: 8px;
@@ -563,10 +581,11 @@
       color: #9b1c1c;
       padding: 14px 18px;
       border-radius: 6px;
-      margin-bottom: 20px;
+      margin: 0 auto 16px auto;
       font-size: 14px;
       box-sizing: border-box;
       width: 100%;
+      max-width: 100%;
     }
     .chk-alert-box.show {
       display: block;
@@ -603,33 +622,49 @@
     @media (max-width: 768px) {
       .chk-header {
         padding: 12px 16px;
+        width: 100%;
+        box-sizing: border-box;
       }
       .chk-header-inner {
+        width: 100%;
+        max-width: 100%;
         gap: 8px;
       }
       .chk-logo img {
         max-height: 22px;
       }
       .chk-security-tag {
-        font-size: 11.5px;
-        padding: 5px 10px;
-        gap: 5px;
+        font-size: 11px;
+        padding: 4px 8px;
+        gap: 4px;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
       .chk-security-tag svg {
-        width: 14px;
-        height: 14px;
+        width: 13px;
+        height: 13px;
       }
 
       .chk-container {
-        display: flex;
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
         width: 100% !important;
         max-width: 100% !important;
-        margin: 12px auto !important;
-        padding: 0 16px !important;
-        gap: 16px !important;
+        margin: 0 auto !important;
+        padding: 12px 16px !important;
+        gap: 0 !important;
         box-sizing: border-box !important;
         overflow-x: hidden !important;
+      }
+
+      .chk-main-col,
+      .chk-container > section,
+      .chk-order-summary {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
       }
 
       /* Resumo do pedido limpo e compacto no topo */
@@ -637,12 +672,11 @@
         order: -1;
         position: static !important;
         top: auto !important;
-        width: 100% !important;
         margin-bottom: 0 !important;
       }
       .chk-order-summary .chk-card {
         padding: 16px !important;
-        margin-bottom: 0 !important;
+        margin: 0 auto 16px auto !important;
       }
       .chk-order-summary .chk-card-title {
         font-size: 16px !important;
@@ -680,12 +714,13 @@
         font-size: 17px !important;
       }
 
-      /* Formulário em 1 coluna (100% largura) */
+      /* Todos os cards com margem simétrica e largura 100% */
       .chk-card {
         padding: 18px 16px !important;
-        margin-bottom: 16px !important;
+        margin: 0 auto 16px auto !important;
         border-radius: 8px !important;
         width: 100% !important;
+        max-width: 100% !important;
         box-sizing: border-box !important;
       }
       .chk-card-title {
@@ -699,26 +734,41 @@
         font-size: 12px !important;
       }
 
+      form#checkout-form {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+      }
+
       .chk-form-grid {
         display: flex !important;
         flex-direction: column !important;
         gap: 14px !important;
         width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
       }
       .chk-field,
       .chk-col-full {
         width: 100% !important;
+        max-width: 100% !important;
         grid-column: span 1 !important;
         margin: 0 !important;
+        box-sizing: border-box !important;
       }
       .chk-input-wrap {
         width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
       }
       .chk-label {
         font-size: 13px !important;
       }
       .chk-input {
         width: 100% !important;
+        max-width: 100% !important;
         height: 48px !important;
         min-height: 48px !important;
         font-size: 16px !important; /* Previne zoom no iOS Safari */
@@ -730,12 +780,17 @@
         min-height: 50px !important;
         font-size: 15px !important;
         width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
       }
 
       /* Tela do Pix no Mobile */
       .chk-pix-container {
-        padding: 20px 14px !important;
+        padding: 20px 16px !important;
         width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto 16px auto !important;
+        box-sizing: border-box !important;
       }
       .chk-pix-title {
         font-size: 20px !important;
@@ -746,36 +801,42 @@
       }
       .chk-pix-amount {
         font-size: 28px !important;
-        margin: 4px 0 12px !important;
+        margin: 4px auto 12px auto !important;
       }
       .chk-qrcode-box {
         padding: 12px !important;
-        margin: 12px auto 16px auto !important;
+        margin: 16px auto !important;
+        width: auto !important;
+        max-width: 210px !important;
       }
       .chk-qrcode-img {
-        width: 210px !important;
-        max-width: 68vw !important;
+        width: 100% !important;
+        max-width: 180px !important;
       }
       .chk-copy-box {
         width: 100% !important;
         max-width: 100% !important;
+        margin: 12px auto 0 auto !important;
       }
       .chk-copy-btn {
         height: 48px !important;
         min-height: 48px !important;
         font-size: 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
       }
       .chk-radar-box {
         font-size: 12px !important;
         padding: 10px 12px !important;
         width: 100% !important;
         max-width: 100% !important;
+        margin: 16px auto 0 auto !important;
       }
     }
 
     @media (max-width: 380px) {
       .chk-container {
-        padding: 0 12px !important;
+        padding: 10px 12px !important;
       }
       .chk-card {
         padding: 16px 12px !important;
@@ -787,15 +848,17 @@
         max-height: 20px;
       }
       .chk-security-tag {
-        font-size: 10.5px;
-        padding: 4px 8px;
+        font-size: 10px;
+        padding: 3px 6px;
       }
       .chk-security-tag span {
-        font-size: 10.5px;
+        font-size: 10px;
+      }
+      .chk-qrcode-box {
+        max-width: 190px !important;
       }
       .chk-qrcode-img {
-        width: 190px !important;
-        max-width: 65vw !important;
+        max-width: 160px !important;
       }
       .chk-pix-amount {
         font-size: 26px !important;
@@ -895,7 +958,7 @@ fbq('track', 'PageView');
   <main class="chk-container">
     
     <!-- Coluna Esquerda: Formulário de Dados e Tela do PIX -->
-    <section>
+    <section class="chk-main-col">
 
       <!-- Alerta de Erro Global -->
       <div class="chk-alert-box" id="chk-global-alert">
@@ -949,8 +1012,8 @@ fbq('track', 'PageView');
               </div>
             </div>
 
-            <!-- CEP -->
-            <div class="chk-field">
+            <!-- 1. CEP de entrega -->
+            <div class="chk-field chk-col-full">
               <label class="chk-label" for="chk-cep">CEP de entrega <span class="req">*</span></label>
               <div class="chk-input-wrap">
                 <input type="text" id="chk-cep" class="chk-input" placeholder="00000-000" maxlength="9" required inputmode="numeric" autocomplete="postal-code">
@@ -959,16 +1022,7 @@ fbq('track', 'PageView');
               </div>
             </div>
 
-            <!-- Número -->
-            <div class="chk-field">
-              <label class="chk-label" for="chk-number">Número <span class="req">*</span></label>
-              <div class="chk-input-wrap">
-                <input type="text" id="chk-number" class="chk-input" placeholder="Ex: 120" required>
-                <div class="chk-error-msg" id="err-number">Informe o número do endereço.</div>
-              </div>
-            </div>
-
-            <!-- Endereço / Rua -->
+            <!-- 2. Rua / Logradouro -->
             <div class="chk-field chk-col-full">
               <label class="chk-label" for="chk-street">Rua / Logradouro <span class="req">*</span></label>
               <div class="chk-input-wrap">
@@ -977,13 +1031,22 @@ fbq('track', 'PageView');
               </div>
             </div>
 
-            <!-- Complemento (opcional) -->
+            <!-- 3. Número -->
+            <div class="chk-field">
+              <label class="chk-label" for="chk-number">Número <span class="req">*</span></label>
+              <div class="chk-input-wrap">
+                <input type="text" id="chk-number" class="chk-input" placeholder="Ex: 120" required>
+                <div class="chk-error-msg" id="err-number">Informe o número do endereço.</div>
+              </div>
+            </div>
+
+            <!-- 3. Complemento (opcional) -->
             <div class="chk-field">
               <label class="chk-label" for="chk-complement">Complemento <span style="font-weight: 400; color: #888;">(opcional)</span></label>
               <input type="text" id="chk-complement" class="chk-input" placeholder="Apto, Bloco, Casa 2">
             </div>
 
-            <!-- Bairro -->
+            <!-- 4. Bairro -->
             <div class="chk-field">
               <label class="chk-label" for="chk-neighborhood">Bairro <span class="req">*</span></label>
               <div class="chk-input-wrap">
@@ -992,7 +1055,7 @@ fbq('track', 'PageView');
               </div>
             </div>
 
-            <!-- Cidade -->
+            <!-- 5. Cidade -->
             <div class="chk-field">
               <label class="chk-label" for="chk-city">Cidade <span class="req">*</span></label>
               <div class="chk-input-wrap">
@@ -1001,8 +1064,8 @@ fbq('track', 'PageView');
               </div>
             </div>
 
-            <!-- Estado (UF) -->
-            <div class="chk-field">
+            <!-- 5. Estado (UF) -->
+            <div class="chk-field chk-col-full">
               <label class="chk-label" for="chk-state">Estado (UF) <span class="req">*</span></label>
               <div class="chk-input-wrap">
                 <input type="text" id="chk-state" class="chk-input" placeholder="SP" maxlength="2" style="text-transform: uppercase;" required>
