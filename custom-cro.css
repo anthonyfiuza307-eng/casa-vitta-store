@@ -1818,7 +1818,7 @@ h2:not(.cv-manifesto__title),
 h3:not(.cv-manifesto__title),
 h4, h5, h6,
 p:not([class*="announcement"]):not([class*="announcement"] *):not(.announcement-bar *):not(.announcement-bar):not(.topbar *):not(.cv-topbar *):not(.top-bar *):not(announcement-bar-component *):not(.cv-manifesto *):not(.cv-manifesto-fullwidth *):not(.cro-cart-checkout-btn *):not(.cro-cart-checkout-btn):not(.checkout-btn *):not(.btn-finalizar *):not(#btn-checkout *):not(.chk-submit-btn *):not(.chk-copy-btn *):not(.cro-quick-add-btn *):not(.cv-btn-comprar *):not(.cv-btn-adicionar *):not(.button--primary *):not(.btn-primary *):not(.btn-ver-colecao *):not(button.add-to-cart-button *):not(.product-form__submit *):not(.cv-pdp-buy-btn *):not(.cv-pdp-cart-btn *),
-span:not([class*="announcement"]):not([class*="announcement"] *):not(.announcement-bar *):not(.announcement-bar):not(.topbar *):not(.cv-topbar *):not(.top-bar *):not(announcement-bar-component *):not(.cv-manifesto *):not(.cv-manifesto-fullwidth *):not(.cro-cart-checkout-btn *):not(.cro-cart-checkout-btn):not(.checkout-btn *):not(.btn-finalizar *):not(#btn-checkout *):not(.chk-submit-btn *):not(.chk-copy-btn *):not(.cro-quick-add-btn *):not(.cv-btn-comprar *):not(.cv-btn-adicionar *):not(.button--primary *):not(.btn-primary *):not(.btn-ver-colecao *):not(button.add-to-cart-button *):not(.product-form__submit *):not(.cv-pdp-buy-btn *):not(.cv-pdp-cart-btn *):not(.cro-drawer-badge):not(.badge):not(.chk-security-tag *) {
+span:not([class*="announcement"]):not([class*="announcement"] *):not(.announcement-bar *):not(.announcement-bar):not(.topbar *):not(.cv-topbar *):not(.top-bar *):not(announcement-bar-component *):not(.cv-manifesto *):not(.cv-manifesto-fullwidth *):not(.cro-cart-checkout-btn *):not(.cro-cart-checkout-btn):not(.checkout-btn *):not(.btn-finalizar *):not(#btn-checkout *):not(.chk-submit-btn *):not(.chk-copy-btn *):not(.chk-step-num):not(.chk-step-num *):not(.cro-quick-add-btn *):not(.cv-btn-comprar *):not(.cv-btn-adicionar *):not(.button--primary *):not(.btn-primary *):not(.btn-ver-colecao *):not(button.add-to-cart-button *):not(.product-form__submit *):not(.cv-pdp-buy-btn *):not(.cv-pdp-cart-btn *):not(.cro-drawer-badge):not(.badge):not(.chk-security-tag *) {
   color: #1A1A1A !important;
 }
 
@@ -1903,6 +1903,8 @@ announcement-bar-component *,
 }
 
 /* B. Botões de Ação com Fundo Verde e Texto Branco */
+.chk-step-num,
+.chk-step-num *,
 .chk-submit-btn,
 .chk-submit-btn *,
 .chk-copy-btn,
@@ -2074,5 +2076,83 @@ button.cro-quick-add-btn svg {
   color: #ffffff !important;
   fill: #ffffff !important;
   stroke: #ffffff !important;
+}
+
+/* ==========================================================================
+   5. CONTRASTE DE TEXTO BRANCO NO MOBILE (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .chk-step-num,
+  .chk-step-num *,
+  .chk-submit-btn,
+  .chk-submit-btn *,
+  .chk-submit-btn span,
+  .chk-copy-btn,
+  .chk-copy-btn *,
+  .chk-copy-btn span,
+  .cro-cart-checkout-btn,
+  .cro-cart-checkout-btn *,
+  .cro-cart-checkout-btn span,
+  .cro-cart-checkout-btn svg,
+  .checkout-btn,
+  .checkout-btn *,
+  .checkout-btn span,
+  .btn-finalizar,
+  .btn-finalizar *,
+  .btn-finalizar span,
+  #btn-checkout,
+  #btn-checkout *,
+  #btn-checkout span,
+  .cro-quick-add-btn,
+  .cro-quick-add-btn *,
+  .cro-quick-add-btn span,
+  .cro-quick-add-btn svg,
+  .cv-topbar,
+  .cv-topbar *,
+  .cv-topbar p,
+  .cv-topbar span,
+  .topbar,
+  .topbar *,
+  .top-bar,
+  .top-bar *,
+  .announcement-bar,
+  .announcement-bar *,
+  .announcement-bar__text,
+  .announcement-bar__text *,
+  announcement-bar-component,
+  announcement-bar-component *,
+  .button--primary,
+  .button--primary *,
+  .button--primary span,
+  .btn-primary,
+  .btn-primary *,
+  .btn-primary span,
+  .btn-ver-colecao,
+  .btn-ver-colecao *,
+  .btn-ver-colecao span,
+  .cv-btn-comprar,
+  .cv-btn-comprar *,
+  .cv-btn-comprar span,
+  .cv-btn-adicionar,
+  .cv-btn-adicionar *,
+  .cv-btn-adicionar span,
+  .cv-pdp-buy-btn,
+  .cv-pdp-buy-btn *,
+  .cv-pdp-buy-btn span,
+  .cv-pdp-cart-btn,
+  .cv-pdp-cart-btn *,
+  .cv-pdp-cart-btn span,
+  button.add-to-cart-button,
+  button.add-to-cart-button *,
+  button.add-to-cart-button span,
+  .product-form__submit,
+  .product-form__submit *,
+  .product-form__submit span,
+  .shopify-payment-button__button,
+  .shopify-payment-button__button * {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+  }
 }
 

@@ -179,7 +179,7 @@
           </a>
           <div class="cro-cart-security-badge">
             <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-            Compra 100% Segura · Criptografia SSL 256 bits
+            Compra 100% Segura
           </div>
         </div>
       `;
@@ -445,7 +445,7 @@
           <h4>Uso das Informações</h4>
           <p>As informações fornecidas em nossa loja (como nome, endereço e e-mail) são utilizadas exclusivamente para o processamento de pedidos, entrega segura e comunicações importantes sobre suas compras.</p>
           <h4>Segurança e Criptografia</h4>
-          <p>Nosso ambiente é protegido por certificados SSL de 256 bits. Não compartilhamos, vendemos ou alugamos seus dados para terceiros sob nenhuma circunstância.</p>
+          <p>Nosso ambiente é protegido por criptografia de ponta a ponta. Não compartilhamos, vendemos ou alugamos seus dados para terceiros sob nenhuma circunstância.</p>
         `
       },
       'trocas': {
