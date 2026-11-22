@@ -580,7 +580,7 @@ h2:not(.cv-manifesto__title),
 h3:not(.cv-manifesto__title),
 h4, h5, h6,
 p:not(.cv-manifesto__text):not(.announcement-bar__message):not(.cv-topbar-text),
-span:not(.cro-drawer-badge):not(.badge):not(.cv-manifesto *):not(.cv-topbar *):not(.chk-security-tag *) {
+span:not(.cro-drawer-badge):not(.badge):not(.cv-manifesto *):not(.cv-topbar *):not(.chk-security-tag *):not(.cro-quick-add-btn *):not(.cro-quick-add-btn):not(.quick-add-btn *):not(.btn-add-card *) {
   color: #1A1A1A !important;
 }
 
@@ -798,7 +798,20 @@ button.quick-add__button {
   background: #17241c !important;
 }
 
-.cro-quick-add-btn * {
+.cro-quick-add-btn *,
+.cro-quick-add-btn span,
+.cro-quick-add-btn svg,
+.quick-add-btn,
+.quick-add-btn *,
+.quick-add-btn span,
+.btn-add-card,
+.btn-add-card *,
+.btn-add-card span,
+button.cro-quick-add-btn,
+button.cro-quick-add-btn span,
+button.cro-quick-add-btn svg {
   background: transparent !important;
   color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
 }
