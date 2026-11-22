@@ -1699,3 +1699,43 @@ img, video, iframe, svg, picture {
     gap: 12px !important;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   ORDEM PERFEITA NA PÁGINA DO PRODUTO NO MOBILE (display: contents + order)
+   1. Galeria (Foto + Miniaturas) -> order: 1
+   2. Buy Box (Título, Preço, Variações, CTA Comprar) -> order: 2
+   3. Descrição Completa e FAQ -> order: 3
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .cv-pdp-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: 100% !important;
+  }
+  .cv-pdp-col-left {
+    display: contents !important;
+  }
+  .cv-pdp-gallery {
+    order: 1 !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+  .cv-pdp-col-right {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: static !important;
+    margin-bottom: 24px !important;
+  }
+  .cv-pdp-description {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin-top: 10px !important;
+    border-top: 1px solid #edebe7 !important;
+    padding-top: 24px !important;
+  }
+}

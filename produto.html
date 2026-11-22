@@ -174,15 +174,61 @@
       top: 90px;
     }
 
-    @media (max-width: 900px) {
+    @media (min-width: 769px) {
       .cv-pdp-grid {
-        flex-direction: column;
-        gap: 32px;
+        display: flex;
+        gap: 48px;
+        align-items: flex-start;
       }
-      .cv-pdp-col-left, .cv-pdp-col-right {
+      .cv-pdp-col-left {
+        width: 55%;
+        flex: 0 0 55%;
+        display: block;
+      }
+      .cv-pdp-gallery {
         width: 100%;
-        flex: 0 0 100%;
-        position: static;
+      }
+      .cv-pdp-description {
+        width: 100%;
+        margin-top: 32px;
+      }
+      .cv-pdp-col-right {
+        width: 45%;
+        flex: 0 0 45%;
+        position: sticky;
+        top: 90px;
+      }
+    }
+    @media (max-width: 768px) {
+      .cv-pdp-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        width: 100% !important;
+      }
+      .cv-pdp-col-left {
+        display: contents !important;
+      }
+      .cv-pdp-gallery {
+        order: 1 !important;
+        width: 100% !important;
+        margin-bottom: 12px !important;
+      }
+      .cv-pdp-col-right {
+        order: 2 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        position: static !important;
+        margin-bottom: 24px !important;
+      }
+      .cv-pdp-description {
+        order: 3 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        margin-top: 10px !important;
+        border-top: 1px solid #edebe7 !important;
+        padding-top: 24px !important;
       }
     }
 
@@ -771,15 +817,18 @@ fbq('track', 'PageView');
 
       <!-- COLUNA DA ESQUERDA (55%): FOTO, MINIATURAS E DESCRIÇÃO EMPILHADA -->
       <section class="cv-pdp-col-left">
-        <!-- Foto Principal 1:1 -->
-        <div class="cv-main-image-box">
-          <img id="pdp-main-image" src="" alt="Foto do Produto">
+        <!-- Galeria de Fotos e Miniaturas (order: 1 no Mobile) -->
+        <div class="cv-pdp-gallery">
+          <!-- Foto Principal 1:1 -->
+          <div class="cv-main-image-box">
+            <img id="pdp-main-image" src="" alt="Foto do Produto">
+          </div>
+
+          <!-- Fileira de 7 Miniaturas -->
+          <div class="cv-thumbs-row" id="pdp-thumbs-row"></div>
         </div>
 
-        <!-- Fileira de 7 Miniaturas -->
-        <div class="cv-thumbs-row" id="pdp-thumbs-row"></div>
-
-        <!-- Descrição Completa Empilhada -->
+        <!-- Descrição Completa Empilhada (order: 3 no Mobile) -->
         <div class="cv-pdp-description" id="pdp-description-content"></div>
       </section>
 
