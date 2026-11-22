@@ -1739,3 +1739,222 @@ img, video, iframe, svg, picture {
     padding-top: 24px !important;
   }
 }
+
+/* ==========================================================================
+   CORREÇÃO GLOBAL DE CORES DE FUNDO & CONTRASTE (CASA LUCE)
+   ========================================================================== */
+
+/* 1. Restauração do Fundo Branco Puro em TODAS as Páginas */
+html,
+body {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+
+/* 2. Seções: Compre por Categoria, Vitrines, Recomendados, Faixa de Benefícios e Rodapé */
+main,
+#MainContent,
+.shopify-section,
+.section,
+.section-background:not(.cv-manifesto-bg):not(.announcement-bar-bg),
+.color-scheme-1,
+.color-scheme-3,
+.color-scheme-4,
+.color-scheme-5,
+.color-scheme-6,
+.color-scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7,
+.cv-cat-container,
+.cv-cat-section,
+.cv-vitrine-section,
+.cv-recommendations,
+.cv-pdp-container,
+.cv-pdp-section,
+.cv-trust-bar,
+.cv-trust-bar-inner,
+.cv-trust-item,
+.cv-site-footer,
+.footer,
+.site-footer,
+.footer-section,
+.footer__content-top,
+.footer__content-bottom,
+.cv-footer-container,
+.cv-footer-grid,
+.cv-footer-bottom,
+.cv-historia-section,
+.cv-historia-wrapper,
+.cv-categories-slider,
+.cv-categories-track,
+.cv-cat-bubble,
+.cv-cat-grid,
+.cv-rec-grid,
+.resource-list-grid,
+.product-grid,
+.grid--2-col-tablet-down,
+#cat-products-grid,
+#pdp-recommendations-grid,
+.cv-product-card,
+.cv-rec-card,
+.product-card,
+.product-card__content,
+.product-card .card__inner,
+.card-gallery,
+.cv-pdp-description {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+
+/* Textos Escuros em Todas as Seções Claras */
+.cv-product-card-title,
+.cv-rec-card-title,
+.product-card .text-block,
+.product-card__title,
+.card-title,
+.heading-font,
+.cv-section-title,
+.cv-pdp-title,
+.cv-cat-bubble span,
+.cv-cat-bubble-name,
+h1:not(.cv-manifesto__title),
+h2:not(.cv-manifesto__title),
+h3:not(.cv-manifesto__title),
+h4, h5, h6,
+p:not(.cv-manifesto__text):not(.announcement-bar__message):not(.cv-topbar-text),
+span:not(.cro-drawer-badge):not(.badge):not(.cv-manifesto *):not(.cv-topbar *):not(.chk-security-tag *) {
+  color: #1A1A1A !important;
+}
+
+.cv-product-card-price,
+.cv-rec-card-price,
+.cro-price-current,
+.price__regular,
+.price-item {
+  color: #1A1A1A !important;
+}
+
+.cv-product-card-installments,
+.cv-rec-card-installments,
+.cro-price-installments {
+  color: #666666 !important;
+}
+
+/* Faixa de 4 Benefícios */
+.cv-trust-bar,
+.cv-trust-bar-inner,
+.cv-trust-item,
+.cv-trust-item span {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+.cv-trust-item svg {
+  color: #233329 !important;
+  fill: #233329 !important;
+}
+
+/* Rodapé com fundo branco e textos escuros */
+.cv-site-footer,
+.cv-footer-container,
+.footer,
+.footer__blocks-wrapper,
+.cv-footer-grid,
+.cv-footer-bottom,
+.cv-footer-col,
+.footer-block {
+  background-color: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+
+.cv-footer-col h4,
+.cv-footer-col a,
+.cv-footer-bottom p,
+.footer-block__heading,
+.footer-block__details-content,
+.footer-block__details-content a {
+  color: #1A1A1A !important;
+}
+
+/* ==========================================================================
+   3. VERDE-ESCURO (#233329) EXCLUSIVAMENTE ONDE ELE PERTENCE:
+   ========================================================================== */
+
+/* A. Top Bar Fina no Topo */
+.cv-topbar,
+.topbar,
+.announcement-bar,
+#announcement-bar,
+.announcement-bar-section,
+.announcement-bar__message,
+.section--announcement-bar {
+  background-color: #233329 !important;
+  color: #FFFFFF !important;
+}
+
+.cv-topbar *,
+.topbar *,
+.announcement-bar *,
+.announcement-bar__message * {
+  color: #FFFFFF !important;
+}
+
+/* B. Botões de Ação com Fundo Verde e Texto Branco */
+.chk-submit-btn,
+.chk-copy-btn,
+.cro-quick-add-btn,
+.cro-cart-checkout-btn,
+.cv-btn-comprar,
+.cv-btn-adicionar,
+.button--primary,
+.btn-primary,
+button.add-to-cart-button,
+.product-form__submit,
+.cv-pdp-buy-btn,
+.cv-pdp-cart-btn,
+.product-form__buttons .button,
+.shopify-payment-button__button {
+  background-color: #233329 !important;
+  color: #FFFFFF !important;
+  border-color: #233329 !important;
+}
+
+.chk-submit-btn *,
+.chk-copy-btn *,
+.cro-quick-add-btn *,
+.cro-cart-checkout-btn *,
+.cv-btn-comprar *,
+.cv-btn-adicionar *,
+.button--primary *,
+.btn-primary *,
+button.add-to-cart-button *,
+.cv-pdp-buy-btn *,
+.cv-pdp-cart-btn * {
+  color: #FFFFFF !important;
+}
+
+/* C. Faixa Manifesto Única em Verde-Escuro com Texto Branco */
+.cv-manifesto-fullwidth,
+#shopify-section-template--31819790352465__cv_manifesto,
+#shopify-section-template--31819790352465__cv_manifesto .section-background,
+.cv-manifesto-section {
+  background-color: #233329 !important;
+  color: #FFFFFF !important;
+}
+
+.cv-manifesto-fullwidth .cv-manifesto__title,
+.cv-manifesto-fullwidth .cv-manifesto__text,
+.cv-manifesto-fullwidth h2,
+.cv-manifesto-fullwidth p,
+#shopify-section-template--31819790352465__cv_manifesto h2,
+#shopify-section-template--31819790352465__cv_manifesto p {
+  color: #FFFFFF !important;
+}
+
+.cv-manifesto-fullwidth .cv-manifesto__btn {
+  background: transparent !important;
+  color: #FFFFFF !important;
+  border: 1px solid #FFFFFF !important;
+}
+
+.cv-manifesto-fullwidth .cv-manifesto__btn:hover {
+  background: #FFFFFF !important;
+  color: #233329 !important;
+}
