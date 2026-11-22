@@ -2,10 +2,33 @@
   "version": 2,
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/pix/status", "destination": "/api/pix/status.js" },
-    { "source": "/api/pix", "destination": "/api/pix/index.js" },
-    { "source": "/api/webhook/elevypay", "destination": "/api/webhook/elevypay.js" },
-    { "source": "/checkout", "destination": "/checkout.html" },
-    { "source": "/obrigado", "destination": "/obrigado.html" }
+    {
+      "source": "/api/pix/status",
+      "destination": "/api/pix/status.js"
+    },
+    {
+      "source": "/api/pix",
+      "destination": "/api/pix/index.js"
+    },
+    {
+      "source": "/api/webhook/elevypay",
+      "destination": "/api/webhook/elevypay.js"
+    },
+    {
+      "source": "/checkout",
+      "destination": "/checkout.html"
+    },
+    {
+      "source": "/obrigado",
+      "destination": "/obrigado.html"
+    },
+    {
+      "source": "/produto",
+      "destination": "/produto.html"
+    },
+    {
+      "source": "/colecao",
+      "destination": "/colecao.html"
+    }
   ]
 }

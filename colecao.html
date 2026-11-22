@@ -451,7 +451,7 @@
   </section>
 
   <!-- 5. Grid de Produtos -->
-  <main class="cv-cat-container">
+  <main class="cv-cat-container" id="collection-grid">
     <div class="cv-grid-toolbar">
       <div id="cat-toolbar-text">Exibindo produtos selecionados</div>
       <div>
@@ -797,12 +797,17 @@
       }
 
       function initCategoryPage() {
+        // Detecção de página robusta (compatível com Vercel Clean URLs sem .html)
+        if (!document.getElementById('collection-grid') && !window.location.pathname.includes('colecao') && !window.location.href.includes('colecao')) {
+          return;
+        }
+
         var attempts = 0;
         function tryRender() {
-          var catalog = window.CASALUCE_PRODUCTS;
+          var catalog = window.CASALUCE_PRODUCTS || window.CAZAVITTA_PRODUCTS;
           if (catalog && Object.keys(catalog).length > 0) {
             renderCategory();
-          } else if (attempts < 20) {
+          } else if (attempts < 100) {
             attempts++;
             setTimeout(tryRender, 50);
           } else {
@@ -810,6 +815,7 @@
           }
         }
         tryRender();
+        window.addEventListener('casaluce_products_ready', tryRender);
 
         var sortSelect = document.getElementById('sort-select');
         if (sortSelect) {

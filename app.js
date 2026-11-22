@@ -325,7 +325,7 @@
 
         // Extrai handle do produto
         let handle = '';
-        const link = card.querySelector('a[href*="id="], a[href*="/products/"]');
+        const link = card.tagName === 'A' ? card : card.querySelector('a[href*="id="], a[href*="/products/"], a[href*="produto"]');
         if (link) {
           const href = link.getAttribute('href');
           if (href.includes('id=')) {
@@ -713,7 +713,7 @@
       }
 
       // 2. Clique em links com /products/ ou produto.html
-      const prodLink = e.target.closest('a[href*="/products/"], a[href*="produto.html"]');
+      const prodLink = e.target.closest('a[href*="/products/"], a[href*="produto.html"], a[href*="produto?id="], a[href*="/produto?"]');
       if (prodLink) {
         // Se for clique no botão de compra rápida, não executa navegação
         if (e.target.closest('.cro-quick-add-btn')) return;
@@ -737,7 +737,7 @@
       const card = e.target.closest('.product-card, .cv-product-card, .cv-rec-card');
       const isControl = e.target.closest('button.slideshow-control, .quick-add, .cro-quick-add-btn');
       if (card && !isControl) {
-        const linkInCard = card.querySelector('a[href*="/products/"], a[href*="produto.html"]');
+        const linkInCard = card.tagName === 'A' ? card : card.querySelector('a[href*="/products/"], a[href*="produto"]');
         if (linkInCard) {
           e.preventDefault();
           const href = linkInCard.getAttribute('href');
@@ -767,7 +767,7 @@
     try { SearchManager.init(); } catch (e) { console.error('SearchManager init err:', e); }
     try { initProductNavigation(); } catch (e) { console.error('initProductNavigation err:', e); }
 
-    if (typeof window !== 'undefined' && window.location && window.location.hash && window.location.hash.includes('produto') && !window.location.pathname.includes('produto.html')) {
+    if (typeof window !== 'undefined' && window.location && window.location.hash && window.location.hash.includes('produto') && (!window.location.pathname.includes('produto') && !document.getElementById('product-detail-container'))) {
       setTimeout(() => {
         const target = document.getElementById('cv_produtos') || document.querySelector('.resource-list-grid');
         if (target) target.scrollIntoView({ behavior: 'smooth' });

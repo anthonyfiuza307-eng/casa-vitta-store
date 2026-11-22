@@ -409,10 +409,15 @@
       color: #ffffff;
       border: none;
       border-radius: 4px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
+      white-space: nowrap;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       transition: background 0.2s, transform 0.15s;
     }
@@ -682,7 +687,7 @@
   <!-- ========================================================================= -->
   <!-- 4. GRID PRINCIPAL (55% ESQUERDA / 45% DIREITA)                            -->
   <!-- ========================================================================= -->
-  <main class="cv-pdp-container">
+  <main class="cv-pdp-container" id="product-detail-container">
     <div class="cv-pdp-grid">
 
       <!-- COLUNA DA ESQUERDA (55%): FOTO, MINIATURAS E DESCRIÇÃO EMPILHADA -->
@@ -1243,12 +1248,17 @@
       }
 
       function initPDP() {
+        // Detecção de página robusta (compatível com Vercel Clean URLs sem .html)
+        if (!document.getElementById('product-detail-container') && !window.location.pathname.includes('produto') && !window.location.href.includes('produto')) {
+          return;
+        }
+
         var attempts = 0;
         function tryRender() {
           var catalog = window.CASALUCE_PRODUCTS || window.CAZAVITTA_PRODUCTS;
           if (catalog && Object.keys(catalog).length > 0) {
             renderProduct();
-          } else if (attempts < 20) {
+          } else if (attempts < 100) {
             attempts++;
             setTimeout(tryRender, 50);
           } else {
@@ -1256,6 +1266,7 @@
           }
         }
         tryRender();
+        window.addEventListener('casaluce_products_ready', tryRender);
 
         // Modal de Opções de Pagamento
         var paymentModal = document.getElementById('payment-modal');
