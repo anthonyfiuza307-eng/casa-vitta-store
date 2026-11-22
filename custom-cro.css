@@ -1053,3 +1053,649 @@ h1, h2, h3, .h1, .h2, .h3, .heading-font {
 .cv-header-logo { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 .cv-header-logo-img { max-height: 28px; width: auto; object-fit: contain; display: block; margin: 0 auto; }
 @media (max-width: 768px) { .cv-header-logo-img { max-height: 22px; } }
+
+
+/* ==========================================================================
+   CASA LUCE - RESPONSIVIDADE MOBILE IMPECÁVEL (max-width: 768px, 360px-430px)
+   ========================================================================== */
+
+/* 1. Prevenção Absoluta de Rolagem Horizontal */
+html, body {
+  max-width: 100vw !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  -webkit-text-size-adjust: 100% !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+img, video, iframe, svg, picture {
+  max-width: 100% !important;
+  height: auto;
+}
+
+/* 2. Drawer do Menu Mobile */
+.cro-mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  z-index: 99998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cro-mobile-drawer-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cro-mobile-drawer-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 84%;
+  max-width: 320px;
+  background: #ffffff;
+  z-index: 99999;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+}
+
+.cro-mobile-drawer-panel.is-open {
+  transform: translateX(0);
+}
+
+.cro-mobile-drawer-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid #edebe7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cro-mobile-drawer-close {
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cro-mobile-drawer-body {
+  padding: 20px 18px 40px;
+  flex: 1;
+}
+
+.cro-mobile-drawer-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: #888888;
+  margin-bottom: 12px;
+}
+
+.cro-mobile-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cro-mobile-drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.cro-mobile-drawer-link:hover,
+.cro-mobile-drawer-link:active {
+  background: #f7f6f2;
+  color: #233329;
+}
+
+.cro-drawer-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #233329;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.cro-badge-sale {
+  background: #b71c1c !important;
+}
+
+.cro-mobile-drawer-sublink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #555555;
+  text-decoration: none;
+}
+
+/* Regras Mobile Gerais (@media max-width: 768px) */
+@media (max-width: 768px) {
+  /* Top Bar Compacta */
+  .cv-topbar, .topbar, .announcement-bar, #announcement-bar {
+    font-size: 11.5px !important;
+    padding: 7px 12px !important;
+    text-align: center !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    word-break: normal !important;
+  }
+
+  /* Header Mobile Compacto em 1 Linha */
+  .cv-header-inner {
+    padding: 10px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 54px !important;
+  }
+
+  .cv-header-left {
+    display: flex !important;
+    align-items: center !important;
+    min-width: 40px !important;
+  }
+
+  .cv-desktop-only {
+    display: none !important;
+  }
+
+  .cv-mobile-menu-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: none !important;
+    border: none !important;
+    color: #1a1a1a !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+  }
+
+  .cv-header-logo {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .cv-header-logo-img {
+    max-height: 22px !important;
+    width: auto !important;
+  }
+
+  .cv-header-icons {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-left: auto !important;
+  }
+
+  .cv-header-icon-btn {
+    background: none !important;
+    border: none !important;
+    padding: 4px !important;
+    color: #1a1a1a !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+  }
+
+  .cv-header-cart-count {
+    position: absolute !important;
+    top: -4px !important;
+    right: -6px !important;
+    background: #233329 !important;
+    color: #ffffff !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Oculta Menu de 2 Linhas do Desktop no Mobile */
+  .cv-nav-wrapper,
+  .cv-nav,
+  .header__row--bottom {
+    display: none !important;
+  }
+
+  /* 3. Página de Produto no Celular */
+  .cv-breadcrumb-section {
+    padding: 10px 14px !important;
+    font-size: 11.5px !important;
+    white-space: nowrap !important;
+    overflow-x: auto !important;
+  }
+
+  .cv-pdp-container {
+    padding: 8px 14px 40px !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .cv-pdp-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .cv-pdp-col-left,
+  .cv-pdp-col-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    position: static !important;
+    box-sizing: border-box !important;
+  }
+
+  .cv-main-image-box {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    background: #f7f6f2 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cv-main-image-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .cv-thumbs-row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    padding: 4px 0 14px 0 !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .cv-thumb-box {
+    width: 60px !important;
+    height: 60px !important;
+    flex: 0 0 60px !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    border: 1px solid #edebe7 !important;
+  }
+
+  .cv-pdp-title {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+    margin: 0 0 8px 0 !important;
+    font-family: 'Lora', Georgia, serif !important;
+  }
+
+  .cv-pdp-stars {
+    margin-bottom: 10px !important;
+    font-size: 13px !important;
+  }
+
+  .cv-pdp-pricing-block {
+    margin: 10px 0 14px 0 !important;
+    padding: 12px 14px !important;
+    background: #faf9f6 !important;
+    border-radius: 6px !important;
+  }
+
+  .cv-pdp-price-row {
+    display: flex !important;
+    align-items: baseline !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .cv-pdp-price-current {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+  }
+
+  .cv-pdp-price-compare {
+    font-size: 15px !important;
+    color: #888888 !important;
+    text-decoration: line-through !important;
+  }
+
+  .cv-pdp-discount-badge {
+    font-size: 11px !important;
+    padding: 3px 8px !important;
+    background: #e8f5e9 !important;
+    color: #2e7d32 !important;
+    border-radius: 3px !important;
+    font-weight: 700 !important;
+  }
+
+  .cv-pdp-installments {
+    font-size: 13px !important;
+    color: #555555 !important;
+    margin-top: 4px !important;
+  }
+
+  .cv-variant-wrapper {
+    margin: 14px 0 !important;
+  }
+
+  .cv-variant-title {
+    font-size: 13px !important;
+  }
+
+  .cv-variant-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-top: 8px !important;
+  }
+
+  .cv-variant-btn {
+    padding: 8px 14px !important;
+    font-size: 12.5px !important;
+    min-height: 38px !important;
+    border-radius: 4px !important;
+  }
+
+  .cv-qty-atc-row {
+    display: flex !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+    width: 100% !important;
+  }
+
+  .cv-qty-selector {
+    flex: 0 0 96px !important;
+    height: 48px !important;
+  }
+
+  .cv-atc-btn {
+    flex: 1 !important;
+    height: 48px !important;
+    font-size: 12.5px !important;
+    padding: 0 10px !important;
+    white-space: nowrap !important;
+    letter-spacing: 0.5px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .cv-buy-now-btn {
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    margin-top: 0 !important;
+    margin-bottom: 16px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .cv-trust-boxes {
+    margin-top: 14px !important;
+    gap: 10px !important;
+  }
+
+  .cv-trust-box-item {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .cv-pdp-description {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin-top: 24px !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  .cv-pdp-description img,
+  .cv-pdp-description table,
+  .cv-pdp-description iframe {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 6px !important;
+  }
+
+  /* 4. Vitrine em 2 Colunas Simétricas */
+  .cv-cat-grid,
+  .cv-rec-grid,
+  .resource-list-grid,
+  .product-grid,
+  .grid--2-col-tablet-down,
+  #cat-products-grid,
+  #pdp-recommendations-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px 10px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .cv-cat-container {
+    padding: 12px 14px 40px !important;
+    max-width: 100vw !important;
+  }
+
+  .cv-product-card,
+  .cv-rec-card,
+  .product-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .cv-product-card-media,
+  .cv-rec-img-box,
+  .card-gallery,
+  .product-card__media-wrapper {
+    aspect-ratio: 1 / 1 !important;
+    width: 100% !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    background: #f7f6f2 !important;
+  }
+
+  .cv-product-card-media img,
+  .cv-rec-img-box img,
+  .product-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .cv-product-card-title,
+  .cv-rec-card-title {
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+    margin: 6px 0 4px 0 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .cv-product-card-price,
+  .cv-rec-card-price {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+  }
+
+  .cv-product-card-installments,
+  .cv-rec-card-installments {
+    font-size: 11px !important;
+  }
+
+  /* Botão rápido + Adicionar visível no celular */
+  .cro-quick-add-btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    position: static !important;
+    width: 100% !important;
+    margin-top: 6px !important;
+    padding: 6px 8px !important;
+    font-size: 11px !important;
+    height: 32px !important;
+    border-radius: 3px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Banners Editoriais e Bloco História */
+  .cv-banner-editorial {
+    padding: 0 !important;
+    margin: 20px 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .cv-banner-editorial img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .cv-historia-wrapper {
+    padding: 24px 14px !important;
+    width: 100% !important;
+  }
+
+  .cv-historia-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    text-align: center !important;
+  }
+
+  .cv-historia-media img {
+    width: 100% !important;
+    max-height: 280px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+  }
+
+  /* Faixa de 4 Benefícios em Grid 2x2 */
+  .cv-trust-bar {
+    padding: 24px 14px !important;
+    width: 100% !important;
+  }
+
+  .cv-trust-bar-inner {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .cv-trust-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    gap: 6px !important;
+  }
+
+  /* 5. Carrinho Drawer 100% Largura no Celular */
+  .cro-cart-drawer-panel {
+    width: 100% !important;
+    max-width: 100vw !important;
+    border-radius: 0 !important;
+  }
+
+  .cro-cart-drawer-header {
+    padding: 14px 16px !important;
+  }
+
+  .cro-cart-drawer-body {
+    padding: 12px 14px !important;
+  }
+
+  .cro-cart-item {
+    padding: 12px 0 !important;
+    gap: 12px !important;
+  }
+
+  .cro-cart-drawer-footer {
+    padding: 14px 14px 20px !important;
+  }
+
+  .cro-cart-checkout-btn {
+    height: 50px !important;
+    font-size: 14px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Rodapé em 1 Coluna */
+  .cv-site-footer {
+    padding: 30px 14px 40px !important;
+    width: 100% !important;
+  }
+
+  .cv-footer-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .cv-footer-grid,
+  .footer__blocks-wrapper {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    text-align: left !important;
+  }
+
+  .cv-footer-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+}

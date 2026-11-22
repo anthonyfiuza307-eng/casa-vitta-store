@@ -686,6 +686,110 @@
   window.SearchManager = SearchManager;
 
   // --------------------------------------------------------------------------
+  // 8. MOBILE MENU DRAWER (MENU LATERAL DESLIZANTE PARA CELULAR)
+  // --------------------------------------------------------------------------
+  const MobileMenuDrawer = {
+    panel: null,
+    overlay: null,
+
+    init() {
+      this.build();
+      this.bindEvents();
+    },
+
+    build() {
+      if (document.querySelector('.cro-mobile-drawer-panel')) return;
+
+      this.overlay = document.createElement('div');
+      this.overlay.className = 'cro-mobile-drawer-overlay';
+
+      this.panel = document.createElement('aside');
+      this.panel.className = 'cro-mobile-drawer-panel';
+      this.panel.setAttribute('aria-label', 'Menu de Categorias');
+
+      this.panel.innerHTML = `
+        <div class="cro-mobile-drawer-header">
+          <a href="index.html" class="cro-mobile-drawer-logo" aria-label="CASA LUCE">
+            <img src="assets/logo-casa-luce.png" alt="CASA LUCE" style="max-height: 22px; width: auto; display: block;">
+          </a>
+          <button type="button" class="cro-mobile-drawer-close" aria-label="Fechar Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="18" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="cro-mobile-drawer-body">
+          <div class="cro-mobile-drawer-section-title">Categorias</div>
+          <nav class="cro-mobile-drawer-nav">
+            <a href="colecao.html?cat=natal" class="cro-mobile-drawer-link">
+              <span>Natal 2026</span>
+              <span class="cro-drawer-badge">Destaque</span>
+            </a>
+            <a href="colecao.html?cat=esquenta-black" class="cro-mobile-drawer-link">
+              <span>Esquenta Black</span>
+              <span class="cro-drawer-badge cro-badge-sale">Ofertas</span>
+            </a>
+            <a href="colecao.html?cat=decor" class="cro-mobile-drawer-link">Decor</a>
+            <a href="colecao.html?cat=para-servir" class="cro-mobile-drawer-link">Para Servir</a>
+            <a href="colecao.html?cat=lavabo-e-aromas" class="cro-mobile-drawer-link">Lavabo e Aromas</a>
+            <a href="colecao.html?cat=muranos" class="cro-mobile-drawer-link">Muranos</a>
+            <a href="colecao.html?cat=pedras-naturais" class="cro-mobile-drawer-link">Pedras Naturais</a>
+            <a href="colecao.html?cat=acrilicos" class="cro-mobile-drawer-link">Acrílicos</a>
+            <a href="colecao.html?cat=religiosos" class="cro-mobile-drawer-link">Religiosos</a>
+            <a href="colecao.html?cat=cantinho-do-cafe" class="cro-mobile-drawer-link">Cantinho do Café</a>
+            <a href="colecao.html?cat=exclusivos" class="cro-mobile-drawer-link">Exclusivos</a>
+            <a href="colecao.html?cat=lancamentos" class="cro-mobile-drawer-link">Lançamentos</a>
+            <a href="colecao.html?cat=mais-cor" class="cro-mobile-drawer-link">Mais Cor</a>
+            <a href="colecao.html?cat=assinados" class="cro-mobile-drawer-link">Design Assinado</a>
+          </nav>
+
+          <div class="cro-mobile-drawer-section-title" style="margin-top: 24px;">Atendimento</div>
+          <div class="cro-mobile-drawer-nav">
+            <a href="mailto:atendimento@casaluce.com.br" class="cro-mobile-drawer-sublink">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>atendimento@casaluce.com.br</span>
+            </a>
+            <a href="index.html#cv_produtos" class="cro-mobile-drawer-sublink">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <span>Rastrear Pedido</span>
+            </a>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(this.overlay);
+      document.body.appendChild(this.panel);
+    },
+
+    open() {
+      if (this.overlay) this.overlay.classList.add('is-open');
+      if (this.panel) this.panel.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    },
+
+    close() {
+      if (this.overlay) this.overlay.classList.remove('is-open');
+      if (this.panel) this.panel.classList.remove('is-open');
+      document.body.style.overflow = '';
+    },
+
+    bindEvents() {
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('#cro-mobile-menu-btn, .cv-mobile-menu-toggle, .header__icon--menu, [aria-label="Menu"]')) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.open();
+        } else if (e.target.closest('.cro-mobile-drawer-close') || e.target === this.overlay) {
+          e.preventDefault();
+          this.close();
+        }
+      });
+    }
+  };
+
+
+  // --------------------------------------------------------------------------
   // 6. NAVEGAÇÃO, COLEÇÕES E INTERCEPTAÇÕES
   // --------------------------------------------------------------------------
   function initProductNavigation() {
@@ -766,6 +870,7 @@
     try { ModalManager.init(); } catch (e) { console.error('ModalManager init err:', e); }
     try { SearchManager.init(); } catch (e) { console.error('SearchManager init err:', e); }
     try { initProductNavigation(); } catch (e) { console.error('initProductNavigation err:', e); }
+    try { MobileMenuDrawer.init(); } catch (e) { console.error('MobileMenuDrawer init err:', e); }
 
     if (typeof window !== 'undefined' && window.location && window.location.hash && window.location.hash.includes('produto') && (!window.location.pathname.includes('produto') && !document.getElementById('product-detail-container'))) {
       setTimeout(() => {

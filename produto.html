@@ -707,8 +707,15 @@ fbq('track', 'PageView');
   <!-- ========================================================================= -->
   <header class="cv-header">
     <div class="cv-header-inner">
-      <div style="width: 100px;">
-        <a href="index.html" class="cv-nav-link" style="display: flex; align-items: center; gap: 4px; font-size: 12.5px;">
+      <div class="cv-header-left">
+        <button type="button" class="cv-mobile-menu-toggle" id="cro-mobile-menu-btn" aria-label="Abrir Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <a href="index.html" class="cv-nav-link cv-desktop-only" style="display: flex; align-items: center; gap: 4px; font-size: 12.5px;">
           <span>← Voltar</span>
         </a>
       </div>
@@ -716,13 +723,10 @@ fbq('track', 'PageView');
       <a href="index.html" class="cv-header-logo" aria-label="CASA LUCE"><img src="assets/logo-casa-luce.png" alt="CASA LUCE" class="cv-header-logo-img"></a>
 
       <div class="cv-header-icons">
-        <a href="index.html#cv_produtos" class="cv-header-icon-btn" aria-label="Buscar">
+        <button type="button" class="cv-header-icon-btn" aria-label="Buscar" style="background:none; border:none; cursor:pointer;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </a>
-        <a href="index.html#cv_produtos" class="cv-header-icon-btn" aria-label="Conta">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </a>
-        <button type="button" class="cv-header-icon-btn" id="open-cart-btn" aria-label="Sacola de Compras">
+        </button>
+        <button type="button" class="cv-header-icon-btn" id="open-cart-btn" aria-label="Sacola de Compras" style="background:none; border:none; cursor:pointer; position:relative;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
           <span class="cv-header-cart-count" id="header-cart-badge">0</span>
         </button>
