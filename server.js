@@ -47,6 +47,10 @@ const server = http.createServer(async (req, res) => {
   let filePath = pathname;
   if (pathname === '/' || pathname === '') {
     filePath = '/index.html';
+  } else if (pathname === '/produto') {
+    filePath = '/produto.html';
+  } else if (pathname === '/colecao') {
+    filePath = '/colecao.html';
   } else if (pathname === '/checkout') {
     filePath = '/checkout.html';
   } else if (pathname === '/obrigado') {

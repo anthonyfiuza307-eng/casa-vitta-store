@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
+  <link rel="preload" href="products.js" as="script">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="custom-cro.css">
@@ -996,9 +997,113 @@
   <!-- Motor do Carrinho e Interações -->
   <script src="app.js"></script>
 
+  
   <!-- Motor Dinâmico da Página de Produto -->
   <script>
     (function() {
+      // Objeto Fallback Interno Garantido (Carregamento Imediato Anti-falha)
+      var DEFAULT_PRODUCT = {
+        id: 16470631776337,
+        handle: "projetor-holografico-3d-natal-jardim",
+        title: "Projetor Holográfico 3D de Natal para Jardim",
+        price: 96.90,
+        compare_at_price: 139.99,
+        installments: "até 12x de R$ 8,08",
+        images: [
+          "assets/images/projetor-1.png",
+          "assets/images/projetor-2.png",
+          "assets/images/projetor-3.png",
+          "assets/images/projetor-4.png",
+          "assets/images/projetor-5.png",
+          "assets/images/projetor-6.png",
+          "assets/images/projetor-7.png",
+          "assets/images/projetor-8.png",
+          "assets/images/projetor-9.png",
+          "assets/images/projetor-10.jpg"
+        ],
+        options: [
+          {
+            name: "Personagem",
+            values: [
+              "Boneco de Gengibre",
+              "Jesus",
+              "Boneco de Neve",
+              "Papai Noel",
+              "Rena"
+            ]
+          }
+        ],
+        variants: [
+          {
+            id: 63561755131985,
+            title: "Boneco de Gengibre",
+            price: 96.90,
+            compare_at_price: 139.99,
+            available: true,
+            option1: "Boneco de Gengibre"
+          },
+          {
+            id: 63561755164753,
+            title: "Jesus",
+            price: 96.90,
+            compare_at_price: 139.99,
+            available: true,
+            option1: "Jesus"
+          },
+          {
+            id: 63561755197521,
+            title: "Boneco de Neve",
+            price: 96.90,
+            compare_at_price: 139.99,
+            available: true,
+            option1: "Boneco de Neve"
+          },
+          {
+            id: 63561755230289,
+            title: "Papai Noel",
+            price: 96.90,
+            compare_at_price: 139.99,
+            available: true,
+            option1: "Papai Noel"
+          },
+          {
+            id: 63561755263057,
+            title: "Rena",
+            price: 96.90,
+            compare_at_price: 139.99,
+            available: true,
+            option1: "Rena"
+          }
+        ],
+        description: '<p>Leve a magia do Natal para o seu jardim com o Projetor Holográfico 3D. Personagens natalinos parecem flutuar no ar em um efeito de holograma iluminado que chama a atenção de vizinhos, amigos e família.</p><h3>Escolha o seu personagem</h3><p>Papai Noel, rena, boneco de neve, boneco de gengibre ou Jesus: cada modelo cria uma cena única na frente da sua casa.</p><h3>Por que você vai amar</h3><ul><li><strong>Efeito 3D flutuante:</strong> personagens iluminados que parecem saltar no ar.</li><li><strong>Energia solar:</strong> carrega durante o dia e acende à noite, sem tomada e sem fios.</li><li><strong>Controle remoto:</strong> ligue e desligue com praticidade.</li><li><strong>Instalação em segundos:</strong> basta fincar a estaca no jardim e ligar.</li><li><strong>Para área externa:</strong> feito para ficar no jardim durante toda a temporada.</li></ul><h3>O que vem na caixa</h3><ul><li>2 estacas holográficas</li><li>Controle remoto</li><li>Manual de instruções</li></ul><p><img src="assets/images/faq-natalino.png" alt="Guia de Dúvidas Frequentes" style="width:100%; max-width:800px; border-radius:6px;"></p>'
+      };
+
+      var DEFAULT_RECOMMENDATIONS = [
+        {
+          handle: "projetor-luz-magica-arvore-de-natal",
+          title: "Projetor de Luz Mágica para Árvore de Natal",
+          price: 89.90,
+          images: ["assets/images/rec-arvore-magica.png"]
+        },
+        {
+          handle: "cortina-de-led-animado-para-arvore-de-natal-controle-por-app",
+          title: "LED Animado para Árvore de Natal - Controle por App",
+          price: 119.90,
+          images: ["assets/images/rec-pine-glow.png"]
+        },
+        {
+          handle: "teddy-bear-decorativo-com-violao-e-jardineira-azul-20-cm",
+          title: "Teddy Bear Decorativo com Violão e Jardineira Azul",
+          price: 79.90,
+          images: ["assets/images/rec-teddy-bear.png"]
+        },
+        {
+          handle: "centro-de-mesa-decorativo-em-vidro-verde-e-bege-40-cm",
+          title: "Centro de Mesa Decorativo em Vidro Verde e Bege",
+          price: 149.90,
+          images: ["assets/images/rec-escultura-cristal.jpg"]
+        }
+      ];
       function renderProduct() {
         var urlParams = new URLSearchParams(window.location.search);
         var handle = urlParams.get('id') || urlParams.get('product') || urlParams.get('p');
@@ -1011,10 +1116,18 @@
           handle = 'projetor-holografico-3d-natal-jardim';
         }
 
-        var catalog = window.CASALUCE_PRODUCTS || window.CAZAVITTA_PRODUCTS || {};
-        var allKeys = Object.keys(catalog);
-        if (allKeys.length === 0) return;
+        var catalog = window.CASALUCE_PRODUCTS || window.CAZAVITTA_PRODUCTS || window.PRODUCTS;
+        if (!catalog || typeof catalog !== 'object') {
+          catalog = {};
+        }
+        if (!catalog['projetor-holografico-3d-natal-jardim']) {
+          catalog['projetor-holografico-3d-natal-jardim'] = DEFAULT_PRODUCT;
+        }
+        window.CASALUCE_PRODUCTS = catalog;
+        window.CAZAVITTA_PRODUCTS = catalog;
+        window.PRODUCTS = catalog;
 
+        var allKeys = Object.keys(catalog);
         var product = null;
         if (handle) {
           var cleanHandle = handle.toLowerCase().trim().replace(/^\/+|\/+$/g, '');
@@ -1028,10 +1141,8 @@
         }
 
         if (!product) {
-          product = catalog['projetor-holografico-3d-natal-jardim'] || catalog[allKeys[0]];
+          product = catalog['projetor-holografico-3d-natal-jardim'] || DEFAULT_PRODUCT;
         }
-
-        if (!product) return;
 
         // Atualizar Título da Página e Breadcrumb
         document.title = product.title + " | CASA LUCE";
@@ -1114,7 +1225,7 @@
           '<h2>Descrição</h2>' +
           '<div>' + descHtml + '</div>' +
           '<div style="margin-top: 32px; text-align: center;">' +
-          '<img src="assets/images/faq-natalino.png" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/1093/9364/1553/files/Guia_de_duvidas_frequentes_natalino.png?v=1794731929';" alt="Guia de Dúvidas Frequentes" style="width:100%; max-width:800px; border-radius:6px;">' +
+          '<img src="assets/images/faq-natalino.png" onerror="this.onerror=null; this.src=\'https://cdn.shopify.com/s/files/1/1093/9364/1553/files/Guia_de_duvidas_frequentes_natalino.png?v=1794731929\';" alt="Guia de Dúvidas Frequentes" style="width:100%; max-width:800px; border-radius:6px;">' +
           '</div>';
 
         // Opções e Variações
@@ -1225,19 +1336,24 @@
           };
         }
 
-        // Vitrine Recomendados (4 Produtos Dinâmicos da Loja)
+        // Vitrine Recomendados (4 Produtos Dinâmicos da Loja ou Fallback)
         var recGrid = document.getElementById('pdp-recommendations-grid');
+        var recList = [];
         var recKeys = Object.keys(catalog).filter(function(k) { return k !== handle && catalog[k].images && catalog[k].images.length > 0; });
-        var recommendedKeys = recKeys.slice(0, 4);
+        if (recKeys.length >= 4) {
+          recList = recKeys.slice(0, 4).map(function(k) { return catalog[k]; });
+        } else {
+          recList = DEFAULT_RECOMMENDATIONS;
+        }
 
-        if (recGrid && recommendedKeys.length > 0) {
-          recGrid.innerHTML = recommendedKeys.map(function(k) {
-            var p = catalog[k];
+        if (recGrid && recList.length > 0) {
+          recGrid.innerHTML = recList.map(function(p) {
             var pPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.price || 96.90);
             var pInst = ((p.price || 96.90) / 12).toFixed(2).replace('.', ',');
+            var img0 = (p.images && p.images.length > 0) ? p.images[0] : 'assets/images/projetor-1.png';
             return '<a href="produto.html?id=' + p.handle + '" class="cv-rec-card">' +
                    '  <div class="cv-rec-img-box">' +
-                   '    <img src="' + p.images[0] + '" alt="' + p.title + '" loading="lazy" onerror="this.onerror=null; this.src=\'assets/images/projetor-1.png\';">' +
+                   '    <img src="' + img0 + '" alt="' + p.title + '" loading="lazy" onerror="this.onerror=null; this.src=\'assets/images/projetor-1.png\';">' +
                    '  </div>' +
                    '  <h4 class="cv-rec-card-title">' + p.title + '</h4>' +
                    '  <div class="cv-rec-card-price">' + pPrice + '</div>' +
@@ -1253,16 +1369,17 @@
           return;
         }
 
+        // Renderiza imediatamente com dados garantidos
+        renderProduct();
+
         var attempts = 0;
         function tryRender() {
-          var catalog = window.CASALUCE_PRODUCTS || window.CAZAVITTA_PRODUCTS;
-          if (catalog && Object.keys(catalog).length > 0) {
+          var catalog = window.CASALUCE_PRODUCTS || window.CAZAVITTA_PRODUCTS || window.PRODUCTS;
+          if (catalog && Object.keys(catalog).length > 1) {
             renderProduct();
-          } else if (attempts < 100) {
+          } else if (attempts < 60) {
             attempts++;
             setTimeout(tryRender, 50);
-          } else {
-            renderProduct();
           }
         }
         tryRender();
