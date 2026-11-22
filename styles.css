@@ -579,8 +579,8 @@ h1:not(.cv-manifesto__title),
 h2:not(.cv-manifesto__title),
 h3:not(.cv-manifesto__title),
 h4, h5, h6,
-p:not(.cv-manifesto__text):not(.announcement-bar__message):not(.cv-topbar-text),
-span:not(.cro-drawer-badge):not(.badge):not(.cv-manifesto *):not(.cv-topbar *):not(.chk-security-tag *):not(.cro-quick-add-btn *):not(.cro-quick-add-btn):not(.quick-add-btn *):not(.btn-add-card *) {
+p:not([class*="announcement"]):not([class*="announcement"] *):not(.announcement-bar *):not(.announcement-bar):not(.topbar *):not(.cv-topbar *):not(.top-bar *):not(announcement-bar-component *):not(.cv-manifesto *):not(.cv-manifesto-fullwidth *):not(.cro-cart-checkout-btn *):not(.cro-cart-checkout-btn):not(.checkout-btn *):not(.btn-finalizar *):not(#btn-checkout *):not(.chk-submit-btn *):not(.chk-copy-btn *):not(.cro-quick-add-btn *):not(.cv-btn-comprar *):not(.cv-btn-adicionar *):not(.button--primary *):not(.btn-primary *):not(.btn-ver-colecao *):not(button.add-to-cart-button *):not(.product-form__submit *):not(.cv-pdp-buy-btn *):not(.cv-pdp-cart-btn *),
+span:not([class*="announcement"]):not([class*="announcement"] *):not(.announcement-bar *):not(.announcement-bar):not(.topbar *):not(.cv-topbar *):not(.top-bar *):not(announcement-bar-component *):not(.cv-manifesto *):not(.cv-manifesto-fullwidth *):not(.cro-cart-checkout-btn *):not(.cro-cart-checkout-btn):not(.checkout-btn *):not(.btn-finalizar *):not(#btn-checkout *):not(.chk-submit-btn *):not(.chk-copy-btn *):not(.cro-quick-add-btn *):not(.cv-btn-comprar *):not(.cv-btn-adicionar *):not(.button--primary *):not(.btn-primary *):not(.btn-ver-colecao *):not(button.add-to-cart-button *):not(.product-form__submit *):not(.cv-pdp-buy-btn *):not(.cv-pdp-cart-btn *):not(.cro-drawer-badge):not(.badge):not(.chk-security-tag *) {
   color: #1A1A1A !important;
 }
 
@@ -639,55 +639,77 @@ span:not(.cro-drawer-badge):not(.badge):not(.cv-manifesto *):not(.cv-topbar *):n
 
 /* A. Top Bar Fina no Topo */
 .cv-topbar,
+.cv-topbar *,
 .topbar,
+.topbar *,
+.top-bar,
+.top-bar *,
 .announcement-bar,
+.announcement-bar *,
 #announcement-bar,
+#announcement-bar *,
 .announcement-bar-section,
+.announcement-bar-section *,
 .announcement-bar__message,
-.section--announcement-bar {
+.announcement-bar__message *,
+.announcement-bar__text,
+.announcement-bar__text *,
+announcement-bar-component,
+announcement-bar-component *,
+.section--announcement-bar,
+.section--announcement-bar * {
   background-color: #233329 !important;
   color: #FFFFFF !important;
-}
-
-.cv-topbar *,
-.topbar *,
-.announcement-bar *,
-.announcement-bar__message * {
-  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
 }
 
 /* B. Botões de Ação com Fundo Verde e Texto Branco */
 .chk-submit-btn,
+.chk-submit-btn *,
 .chk-copy-btn,
+.chk-copy-btn *,
 .cro-quick-add-btn,
+.cro-quick-add-btn *,
 .cro-cart-checkout-btn,
+.cro-cart-checkout-btn *,
+.cro-cart-checkout-btn span,
+.cro-cart-checkout-btn svg,
+a.cro-cart-checkout-btn,
+a.cro-cart-checkout-btn *,
+.checkout-btn,
+.checkout-btn *,
+.btn-finalizar,
+.btn-finalizar *,
+#btn-checkout,
+#btn-checkout *,
 .cv-btn-comprar,
+.cv-btn-comprar *,
 .cv-btn-adicionar,
+.cv-btn-adicionar *,
 .button--primary,
+.button--primary *,
 .btn-primary,
+.btn-primary *,
+.btn-ver-colecao,
+.btn-ver-colecao *,
 button.add-to-cart-button,
+button.add-to-cart-button *,
 .product-form__submit,
+.product-form__submit *,
 .cv-pdp-buy-btn,
+.cv-pdp-buy-btn *,
 .cv-pdp-cart-btn,
+.cv-pdp-cart-btn *,
 .product-form__buttons .button,
-.shopify-payment-button__button {
+.product-form__buttons .button *,
+.shopify-payment-button__button,
+.shopify-payment-button__button * {
   background-color: #233329 !important;
   color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
   border-color: #233329 !important;
-}
-
-.chk-submit-btn *,
-.chk-copy-btn *,
-.cro-quick-add-btn *,
-.cro-cart-checkout-btn *,
-.cv-btn-comprar *,
-.cv-btn-adicionar *,
-.button--primary *,
-.btn-primary *,
-button.add-to-cart-button *,
-.cv-pdp-buy-btn *,
-.cv-pdp-cart-btn * {
-  color: #FFFFFF !important;
 }
 
 /* C. Faixa Manifesto Única em Verde-Escuro com Texto Branco */
