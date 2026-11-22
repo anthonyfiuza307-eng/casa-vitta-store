@@ -1757,7 +1757,7 @@ main,
 .shopify-section,
 .section,
 .section-background:not(.cv-manifesto-bg):not(.announcement-bar-bg),
-.color-scheme-1,
+.color-scheme-1:not(.quick-add):not(quick-add-component),
 .color-scheme-3,
 .color-scheme-4,
 .color-scheme-5,
@@ -1797,8 +1797,6 @@ main,
 .cv-rec-card,
 .product-card,
 .product-card__content,
-.product-card .card__inner,
-.card-gallery,
 .cv-pdp-description {
   background-color: #FFFFFF !important;
   color: #1A1A1A !important;
@@ -1958,3 +1956,88 @@ button.add-to-cart-button *,
   background: #FFFFFF !important;
   color: #233329 !important;
 }
+
+/* ==========================================================================
+   4. TRANSPARÊNCIA CIRÚRGICA NOS OVERLAYS E FOTOS DOS CARDS DE PRODUTO
+   ========================================================================== */
+.card-gallery,
+.card-gallery *,
+.card-gallery__desktop,
+.card-gallery__mobile-static,
+.card-gallery picture,
+.product-card .card__inner,
+.product-card__media-wrapper,
+.product-card__media-wrapper *,
+.product-media,
+.product-media *,
+.product-media-container,
+.product-media-container *,
+slideshow-component,
+slideshow-container,
+slideshow-arrows,
+slideshow-slide,
+.quick-add,
+.quick-add *,
+quick-add-component,
+quick-add-component *,
+.quick-add__product-form-component,
+.quick-add__product-form-component *,
+.quick-add-overlay,
+.hover-actions,
+.product-image-wrapper,
+.card-img-container,
+.cv-product-card-media,
+.cv-product-card-media *,
+.cv-card-media,
+.cv-card-media *,
+.cv-rec-img-box,
+.cv-rec-img-box *,
+.card-gallery::before,
+.card-gallery::after,
+.quick-add::before,
+.quick-add::after {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.quick-add__button,
+button.quick-add__button {
+  display: none !important;
+  background: transparent !important;
+}
+
+.card-gallery img,
+.product-card img,
+.cv-product-card img,
+.cv-rec-card img,
+.cv-card-media img,
+.cv-rec-img-box img,
+.product-card__media-wrapper img,
+.product-media__image {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  background: transparent !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.cro-quick-add-btn {
+  background-color: #233329 !important;
+  background: #233329 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  z-index: 15 !important;
+}
+
+.cro-quick-add-btn:hover {
+  background-color: #17241c !important;
+  background: #17241c !important;
+}
+
+.cro-quick-add-btn * {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
