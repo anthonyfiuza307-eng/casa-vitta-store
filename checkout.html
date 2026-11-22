@@ -28,22 +28,34 @@
       padding: 0;
     }
 
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: var(--cv-cream);
       color: var(--cv-text);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      width: 100%;
+      min-height: 100vh;
     }
 
     /* Header Seguro */
     .chk-header {
       background: #ffffff;
       border-bottom: 1px solid var(--cv-border);
-      padding: 16px 24px;
+      padding: 14px 24px;
       position: sticky;
       top: 0;
       z-index: 100;
+      width: 100%;
+      box-sizing: border-box;
     }
     .chk-header-inner {
       max-width: 1120px;
@@ -51,6 +63,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
+      width: 100%;
     }
     .chk-logo img {
       max-height: 28px;
@@ -67,31 +81,27 @@
       background: #edf7ee;
       padding: 6px 12px;
       border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .chk-security-tag svg {
       width: 16px;
       height: 16px;
       fill: currentColor;
+      flex-shrink: 0;
     }
 
     /* Container Principal */
     .chk-container {
       max-width: 1120px;
-      margin: 32px auto;
+      margin: 28px auto;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 32px;
+      grid-template-columns: 1fr 400px;
+      gap: 28px;
       align-items: start;
-    }
-
-    @media (max-width: 900px) {
-      .chk-container {
-        grid-template-columns: 1fr;
-        margin: 16px auto;
-        padding: 0 16px;
-        gap: 24px;
-      }
+      width: 100%;
+      box-sizing: border-box;
     }
 
     /* Card Box Padrão */
@@ -102,6 +112,9 @@
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
       padding: 24px;
       margin-bottom: 24px;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
     }
     .chk-card-title {
       font-family: 'Lora', serif;
@@ -125,6 +138,7 @@
       font-size: 13px;
       font-weight: 600;
       font-family: 'Jost', sans-serif;
+      flex-shrink: 0;
     }
 
     /* Grid do Formulário */
@@ -132,17 +146,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .chk-col-full {
       grid-column: span 2;
-    }
-    @media (max-width: 600px) {
-      .chk-form-grid {
-        grid-template-columns: 1fr;
-      }
-      .chk-col-full {
-        grid-column: span 1;
-      }
     }
 
     .chk-field {
@@ -150,29 +158,38 @@
       flex-direction: column;
       gap: 6px;
       position: relative;
+      width: 100%;
+      box-sizing: border-box;
     }
     .chk-label {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 600;
       color: #333333;
+      text-align: left;
+      display: block;
+      width: 100%;
     }
     .chk-label span.req {
       color: var(--cv-red);
     }
     .chk-input-wrap {
       position: relative;
+      width: 100%;
+      box-sizing: border-box;
     }
     .chk-input {
       width: 100%;
-      height: 46px;
+      height: 48px;
+      min-height: 48px;
       padding: 0 14px;
       font-family: inherit;
-      font-size: 14.5px;
+      font-size: 15px;
       color: #222222;
       background: #ffffff;
       border: 1.5px solid #dcdad5;
       border-radius: 6px;
       outline: none;
+      box-sizing: border-box;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .chk-input:focus {
@@ -187,11 +204,14 @@
       border-color: var(--cv-pix-green);
     }
     .chk-error-msg {
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--cv-red);
-      margin-top: 2px;
+      margin-top: 4px;
       display: none;
       font-weight: 500;
+      text-align: left;
+      line-height: 1.35;
+      word-break: break-word;
     }
     .chk-input.is-invalid + .chk-error-msg,
     .chk-error-msg.show {
@@ -202,17 +222,22 @@
     .chk-cep-loader {
       position: absolute;
       right: 12px;
-      top: 14px;
+      top: 50%;
+      transform: translateY(-50%);
       font-size: 12px;
       color: var(--cv-green);
       display: none;
-      font-weight: 500;
+      font-weight: 600;
+      background: #ffffff;
+      padding: 0 4px;
     }
 
     /* Resumo do Pedido */
     .chk-order-summary {
       position: sticky;
       top: 90px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .chk-summary-items {
       max-height: 280px;
@@ -300,6 +325,7 @@
     .chk-submit-btn {
       width: 100%;
       height: 52px;
+      min-height: 52px;
       background: var(--cv-green);
       color: #ffffff;
       border: none;
@@ -314,6 +340,7 @@
       justify-content: center;
       gap: 10px;
       margin-top: 20px;
+      box-sizing: border-box;
       transition: background 0.25s, transform 0.1s, opacity 0.2s;
     }
     .chk-submit-btn:hover:not(:disabled) {
@@ -330,38 +357,71 @@
     /* Tela de Pagamento PIX (Step 2) */
     .chk-pix-container {
       display: none;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 8px 0;
+      width: 100%;
+      padding: 24px 20px;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    .chk-pix-container.active,
+    .chk-pix-container[style*="display: block"],
+    .chk-pix-container[style*="display: flex"] {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
     }
     .chk-pix-badge-success {
       background: #edf7ee;
       color: var(--cv-pix-green);
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 30px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .chk-pix-title {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      color: var(--cv-green);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .chk-pix-subtitle {
+      font-size: 13.5px;
+      color: #666666;
+      margin-bottom: 12px;
+      max-width: 440px;
+      line-height: 1.4;
     }
     .chk-pix-amount {
       font-size: 32px;
       font-weight: 700;
       color: var(--cv-green);
-      margin: 4px 0 16px;
+      margin: 6px 0 14px;
     }
     .chk-pix-timer-box {
-      font-size: 13.5px;
+      font-size: 13px;
       color: #666;
       background: #f8f6f0;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       padding: 6px 14px;
       border-radius: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       border: 1px solid #e8e4dc;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .chk-pix-timer-val {
       font-weight: 700;
@@ -371,43 +431,67 @@
       background: #ffffff;
       border: 2px dashed #d5d1c8;
       border-radius: 12px;
-      padding: 20px;
-      display: inline-block;
-      margin-bottom: 24px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .chk-qrcode-img {
-      width: 220px;
-      height: 220px;
+      width: 210px;
+      max-width: 70vw;
+      height: auto;
+      aspect-ratio: 1 / 1;
       display: block;
       margin: 0 auto;
       object-fit: contain;
     }
     .chk-copy-box {
-      margin-top: 10px;
+      margin-top: 6px;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      width: 100%;
+      max-width: 440px;
+      box-sizing: border-box;
+      align-items: center;
+    }
+    .chk-copy-box .chk-label {
       text-align: left;
+      width: 100%;
+      color: #444444;
+      font-size: 13px;
     }
     .chk-copy-input {
-      width: 100%;
-      height: 44px;
-      padding: 0 12px;
-      font-family: monospace;
+      width: 100% !important;
+      min-height: 48px;
+      padding: 10px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 12px;
-      border: 1px solid #dcdad5;
+      border: 1.5px solid #dcdad5;
       border-radius: 6px;
       background: #fdfdfd;
-      color: #555555;
+      color: #444444;
+      word-break: break-all !important;
+      overflow-wrap: anywhere !important;
+      box-sizing: border-box !important;
+      line-height: 1.4;
+      resize: none;
+      -webkit-user-select: all;
+      user-select: all;
     }
     .chk-copy-btn {
-      width: 100%;
-      height: 48px;
-      background: var(--cv-pix-green);
-      color: #ffffff;
+      width: 100% !important;
+      height: 48px !important;
+      min-height: 48px !important;
+      background: var(--cv-green) !important;
+      color: #ffffff !important;
       border: none;
       border-radius: 6px;
+      font-family: inherit;
       font-size: 14.5px;
       font-weight: 700;
       cursor: pointer;
@@ -415,10 +499,12 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.1s;
+      box-sizing: border-box !important;
+      white-space: nowrap;
     }
     .chk-copy-btn:hover {
-      background: #246428;
+      background: var(--cv-green-hover) !important;
     }
     .chk-copy-feedback {
       display: none;
@@ -426,22 +512,26 @@
       font-size: 13px;
       font-weight: 600;
       text-align: center;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
     /* Radar de status do PIX */
     .chk-radar-box {
-      margin-top: 24px;
-      padding: 16px;
+      margin-top: 20px;
+      padding: 12px 16px;
       background: #faf8f5;
       border-radius: 8px;
       border: 1px solid #ede8e0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      font-size: 13.5px;
+      gap: 10px;
+      font-size: 13px;
       color: #444444;
+      width: 100%;
+      max-width: 440px;
+      box-sizing: border-box;
+      text-align: center;
     }
     .chk-radar-dot {
       width: 12px;
@@ -449,6 +539,7 @@
       background: var(--cv-pix-green);
       border-radius: 50%;
       position: relative;
+      flex-shrink: 0;
     }
     .chk-radar-dot::after {
       content: '';
@@ -474,6 +565,8 @@
       border-radius: 6px;
       margin-bottom: 20px;
       font-size: 14px;
+      box-sizing: border-box;
+      width: 100%;
     }
     .chk-alert-box.show {
       display: block;
@@ -502,6 +595,211 @@
     }
     @keyframes spin {
       to { transform: rotate(360deg); }
+    }
+
+    /* ==========================================================================
+       RESPONSIVIDADE MOBILE IMPECÁVEL (MAX-WIDTH: 768px, 430px, 360px)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .chk-header {
+        padding: 12px 16px;
+      }
+      .chk-header-inner {
+        gap: 8px;
+      }
+      .chk-logo img {
+        max-height: 22px;
+      }
+      .chk-security-tag {
+        font-size: 11.5px;
+        padding: 5px 10px;
+        gap: 5px;
+      }
+      .chk-security-tag svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .chk-container {
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 12px auto !important;
+        padding: 0 16px !important;
+        gap: 16px !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Resumo do pedido limpo e compacto no topo */
+      .chk-order-summary {
+        order: -1;
+        position: static !important;
+        top: auto !important;
+        width: 100% !important;
+        margin-bottom: 0 !important;
+      }
+      .chk-order-summary .chk-card {
+        padding: 16px !important;
+        margin-bottom: 0 !important;
+      }
+      .chk-order-summary .chk-card-title {
+        font-size: 16px !important;
+        margin-bottom: 12px !important;
+      }
+      .chk-summary-items {
+        max-height: 180px !important;
+        margin-bottom: 12px !important;
+        padding-right: 2px !important;
+      }
+      .chk-summary-item {
+        padding: 8px 0 !important;
+        gap: 10px !important;
+      }
+      .chk-item-img {
+        width: 48px !important;
+        height: 48px !important;
+      }
+      .chk-item-name {
+        font-size: 13px !important;
+      }
+      .chk-item-sub {
+        font-size: 11.5px !important;
+      }
+      .chk-item-price {
+        font-size: 13px !important;
+      }
+      .chk-calc-line {
+        font-size: 13.5px !important;
+        margin-bottom: 8px !important;
+      }
+      .chk-calc-line.is-total {
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+        font-size: 17px !important;
+      }
+
+      /* Formulário em 1 coluna (100% largura) */
+      .chk-card {
+        padding: 18px 16px !important;
+        margin-bottom: 16px !important;
+        border-radius: 8px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .chk-card-title {
+        font-size: 17px !important;
+        margin-bottom: 16px !important;
+        gap: 8px !important;
+      }
+      .chk-step-num {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 12px !important;
+      }
+
+      .chk-form-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        width: 100% !important;
+      }
+      .chk-field,
+      .chk-col-full {
+        width: 100% !important;
+        grid-column: span 1 !important;
+        margin: 0 !important;
+      }
+      .chk-input-wrap {
+        width: 100% !important;
+      }
+      .chk-label {
+        font-size: 13px !important;
+      }
+      .chk-input {
+        width: 100% !important;
+        height: 48px !important;
+        min-height: 48px !important;
+        font-size: 16px !important; /* Previne zoom no iOS Safari */
+        padding: 0 14px !important;
+        box-sizing: border-box !important;
+      }
+      .chk-submit-btn {
+        height: 50px !important;
+        min-height: 50px !important;
+        font-size: 15px !important;
+        width: 100% !important;
+      }
+
+      /* Tela do Pix no Mobile */
+      .chk-pix-container {
+        padding: 20px 14px !important;
+        width: 100% !important;
+      }
+      .chk-pix-title {
+        font-size: 20px !important;
+      }
+      .chk-pix-subtitle {
+        font-size: 13px !important;
+        padding: 0 6px !important;
+      }
+      .chk-pix-amount {
+        font-size: 28px !important;
+        margin: 4px 0 12px !important;
+      }
+      .chk-qrcode-box {
+        padding: 12px !important;
+        margin: 12px auto 16px auto !important;
+      }
+      .chk-qrcode-img {
+        width: 210px !important;
+        max-width: 68vw !important;
+      }
+      .chk-copy-box {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .chk-copy-btn {
+        height: 48px !important;
+        min-height: 48px !important;
+        font-size: 14px !important;
+      }
+      .chk-radar-box {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .chk-container {
+        padding: 0 12px !important;
+      }
+      .chk-card {
+        padding: 16px 12px !important;
+      }
+      .chk-header {
+        padding: 10px 12px;
+      }
+      .chk-logo img {
+        max-height: 20px;
+      }
+      .chk-security-tag {
+        font-size: 10.5px;
+        padding: 4px 8px;
+      }
+      .chk-security-tag span {
+        font-size: 10.5px;
+      }
+      .chk-qrcode-img {
+        width: 190px !important;
+        max-width: 65vw !important;
+      }
+      .chk-pix-amount {
+        font-size: 26px !important;
+      }
     }
   </style>
 <script>
@@ -729,8 +1027,8 @@ fbq('track', 'PageView');
           <span>Pedido Reservado com Sucesso!</span>
         </div>
 
-        <h3 style="font-family: 'Lora', serif; font-size: 22px; color: var(--cv-green);">Efetue o pagamento via PIX</h3>
-        <p style="font-size: 13.5px; color: #666666; margin-top: 4px;">Abra o app do seu banco e escolha pagar com PIX Copia e Cola ou ler o QR Code.</p>
+        <h3 class="chk-pix-title">Efetue o pagamento via PIX</h3>
+        <p class="chk-pix-subtitle">Abra o app do seu banco e escolha pagar com PIX Copia e Cola ou ler o QR Code.</p>
 
         <div class="chk-pix-amount" id="chk-pix-amount-val">R$ 0,00</div>
 
@@ -748,7 +1046,7 @@ fbq('track', 'PageView');
         <!-- Box Copia e Cola -->
         <div class="chk-copy-box">
           <label class="chk-label" style="color: #444;">Código PIX Copia e Cola:</label>
-          <input type="text" id="chk-pix-copia-cola" class="chk-copy-input" readonly>
+          <textarea id="chk-pix-copia-cola" class="chk-copy-input" rows="3" readonly placeholder="Carregando código PIX..."></textarea>
           <button type="button" class="chk-copy-btn" id="chk-btn-copy">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>COPIAR CÓDIGO PIX</span>
@@ -1249,11 +1547,11 @@ fbq('track', 'PageView');
             document.execCommand('copy');
           }
           copySuccessMsg.style.display = 'block';
-          btnCopy.style.background = '#1e5222';
+          btnCopy.style.background = '#19251e';
           btnCopy.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span>CÓDIGO COPIADO!</span>';
           setTimeout(function() {
             copySuccessMsg.style.display = 'none';
-            btnCopy.style.background = 'var(--cv-pix-green)';
+            btnCopy.style.background = 'var(--cv-green)';
             btnCopy.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>COPIAR CÓDIGO PIX</span>';
           }, 3500);
         };
