@@ -815,7 +815,7 @@
   <!-- Banner Editorial 1: Natal 2026 -->
   <div class="cv-banner-editorial">
     <a href="colecao.html?cat=natal">
-      <img src="https://www.casaluce.com/cdn/shop/files/cv-banner-natal-desktop.jpg?v=1794709848&width=1920" alt="Coleção de Natal 2026 Casa Luce" loading="lazy">
+      <img src="assets/images/banner-natal-desktop.jpg" onerror="this.onerror=null; this.src='https://wgyci8-th.myshopify.com/cdn/shop/files/cv-banner-natal-desktop.jpg?v=1794709848&width=1920';" alt="Coleção de Natal 2026 Casa Luce" loading="lazy">
     </a>
   </div>
 
@@ -823,7 +823,7 @@
   <div class="cv-historia-wrapper">
     <div class="cv-historia-grid">
       <div class="cv-historia-media">
-        <img src="https://www.casaluce.com/cdn/shop/files/01-vaso-decorativo-em-ceramica-verde-e-bege-com-detalhe-amadeirado-30-cm.png?height=1254&v=1794681772" alt="Nossa história Casa Luce" loading="lazy">
+        <img src="assets/images/banner-nossa-historia.png" onerror="this.onerror=null; this.src='https://wgyci8-th.myshopify.com/cdn/shop/files/01-vaso-decorativo-em-ceramica-verde-e-bege-com-detalhe-amadeirado-30-cm.png?height=1254&v=1794681772';" alt="Nossa história Casa Luce" loading="lazy">
       </div>
       <div class="cv-historia-content">
         <span class="cv-historia-caption">Nossa história</span>
@@ -844,7 +844,7 @@
   <!-- Banner Editorial 4: Para Receber -->
   <div class="cv-banner-editorial">
     <a href="colecao.html?cat=para-servir">
-      <img src="https://www.casaluce.com/cdn/shop/files/cv-banner-mesa.jpg?v=1794709848&width=1920" alt="Para Receber - Mesa posta Casa Luce" loading="lazy">
+      <img src="assets/images/banner-para-receber.jpg" onerror="this.onerror=null; this.src='https://wgyci8-th.myshopify.com/cdn/shop/files/cv-banner-mesa.jpg?v=1794709848&width=1920';" alt="Para Receber - Mesa posta Casa Luce" loading="lazy">
     </a>
   </div>
 
@@ -1079,12 +1079,13 @@
 
         if (images.length > 0) {
           mainImg.src = images[0];
+          mainImg.onerror = function() { this.onerror = null; this.src = "assets/images/projetor-1.png"; };
           mainImg.alt = product.title;
 
           var thumbsToShow = images.slice(0, 7);
           thumbsRow.innerHTML = thumbsToShow.map(function(img, idx) {
             return '<div class="cv-thumb-box ' + (idx === 0 ? 'is-active' : '') + '" data-idx="' + idx + '">' +
-                   '<img src="' + img + '" alt="' + product.title + ' miniatura ' + (idx + 1) + '">' +
+                   '<img src="' + img + '" alt="' + product.title + ' miniatura ' + (idx + 1) + '" onerror="this.onerror=null; this.src=\'assets/images/projetor-1.png\';">' +
                    '</div>';
           }).join('');
         if (window.QuickAdd) window.QuickAdd.attachButtons();
@@ -1108,7 +1109,7 @@
           '<h2>Descrição</h2>' +
           '<div>' + descHtml + '</div>' +
           '<div style="margin-top: 32px; text-align: center;">' +
-          '<img src="https://cdn.shopify.com/s/files/1/1093/9364/1553/files/Guia_de_duvidas_frequentes_natalino.png?v=1794731929" alt="Guia de Dúvidas Frequentes" style="width:100%; max-width:800px; border-radius:6px;">' +
+          '<img src="assets/images/faq-natalino.png" onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/1093/9364/1553/files/Guia_de_duvidas_frequentes_natalino.png?v=1794731929';" alt="Guia de Dúvidas Frequentes" style="width:100%; max-width:800px; border-radius:6px;">' +
           '</div>';
 
         // Opções e Variações
@@ -1231,7 +1232,7 @@
             var pInst = ((p.price || 96.90) / 12).toFixed(2).replace('.', ',');
             return '<a href="produto.html?id=' + p.handle + '" class="cv-rec-card">' +
                    '  <div class="cv-rec-img-box">' +
-                   '    <img src="' + p.images[0] + '" alt="' + p.title + '" loading="lazy">' +
+                   '    <img src="' + p.images[0] + '" alt="' + p.title + '" loading="lazy" onerror="this.onerror=null; this.src=\'assets/images/projetor-1.png\';">' +
                    '  </div>' +
                    '  <h4 class="cv-rec-card-title">' + p.title + '</h4>' +
                    '  <div class="cv-rec-card-price">' + pPrice + '</div>' +

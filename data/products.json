@@ -7,16 +7,16 @@
     "compare_at_price": 139.99,
     "installments": "até 12x de R$ 8,08",
     "images": [
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/hf_20261113_221053_f297f76b-79d1-479f-935a-75665f96f8e5.png?v=1794731606",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/O_Que_Vem_na_Caixa.png?v=1794731956",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/Projetor_Solar_Desenvolvido_para_o_Seu_Quintal.png?v=1794731929",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/Como_Funciona__Holograma_Solar_de_Natal.png?v=1794731929",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/Holograma_Natalino_Ilumina_o_Quintal.png?v=1794731930",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/hf_20261113_221053_013e18c0-8bda-4e24-a64a-08bf160e4b6a.png?v=1794731606",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/hf_20261113_221053_f90c2d65-aadb-4d03-a167-35d2b1970a77.png?v=1794731604",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/hf_20261113_221054_0ce8fe3e-9ae7-4bfc-832f-691b1ada094a.png?v=1794731606",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/hf_20261113_221054_e687e0cc-7dc8-42a8-8e00-d04e4286e393.png?v=1794731604",
-      "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/IMG_3672.jpg?v=1794731602"
+      "assets/images/projetor-1.png",
+      "assets/images/projetor-2.png",
+      "assets/images/projetor-3.png",
+      "assets/images/projetor-4.png",
+      "assets/images/projetor-5.png",
+      "assets/images/projetor-6.png",
+      "assets/images/projetor-7.png",
+      "assets/images/projetor-8.png",
+      "assets/images/projetor-9.png",
+      "assets/images/projetor-10.jpg"
     ],
     "options": [
       {
@@ -100,6 +100,7 @@
     "compare_at_price": 239.99,
     "installments": "até 12x de R$ 11,67",
     "images": [
+      "assets/images/rec-arvore-magica.png",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/VelMerryGlow_Grinch_Tree_Projector_Kit.png?v=1794731603",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/Festive_Ring_Tree_Light_Specifications.png?v=1794731602",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/DESIGN_2.jpg?v=1794731601",
@@ -191,6 +192,7 @@
     "compare_at_price": 237,
     "installments": "até 12x de R$ 11,66",
     "images": [
+      "assets/images/rec-pine-glow.png",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/PineGlow_MagiaNatalinaInteligente.png?v=1794730283",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/AnteseDepois_MagiaPineGlow.png?v=1794730283",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/InstalacaoPineGlowem4Passos.png?v=1794730283",
@@ -640,6 +642,7 @@
     "compare_at_price": "270.40",
     "installments": "até 12x de R$ 14,08",
     "images": [
+      "assets/images/rec-teddy-bear.png",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/02-urso-teddy-decorativo-com-aviao-de-papel-21-5-cm.png?v=1794681774",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/01-urso-teddy-decorativo-com-aviao-de-papel-21-5-cm.png?v=1794681775"
     ],
@@ -885,6 +888,7 @@
     "compare_at_price": "1424.00",
     "installments": "até 12x de R$ 74,17",
     "images": [
+      "assets/images/rec-escultura-cristal.jpg",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/03-centro-de-mesa-decorativo-em-vidro-verde-e-bege-40-cm.png?v=1794681770",
       "https://cdn.shopify.com/s/files/1/1093/9364/1553/files/02-centro-de-mesa-decorativo-em-vidro-verde-e-bege-40-cm.png?v=1794681771"
     ],
